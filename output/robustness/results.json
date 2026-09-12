@@ -1,0 +1,181 @@
+{
+  "official_seed": 20260911,
+  "robustness_seeds": [
+    20260912,
+    20260913,
+    20260914
+  ],
+  "algorithms": [
+    "baseline",
+    "greedy",
+    "local_search"
+  ],
+  "note": "Optional robustness experiment. Official benchmark seed remains 20260911. Local search reuses Phase 10 helpers on in-memory robustness instances and does not overwrite official outputs.",
+  "results": [
+    {
+      "seed": 20260912,
+      "algorithm": "baseline",
+      "trips": 120,
+      "mean_travel_time": 11.58087188720703,
+      "p95_travel_time": 18.09748291015625,
+      "max_congestion_ratio": 2.5,
+      "accepted_moves": "N/A",
+      "iterations": "N/A",
+      "stop_reason": "N/A"
+    },
+    {
+      "seed": 20260912,
+      "algorithm": "greedy",
+      "trips": 120,
+      "mean_travel_time": 6.253848571777343,
+      "p95_travel_time": 8.67578857421875,
+      "max_congestion_ratio": 1.625,
+      "accepted_moves": "N/A",
+      "iterations": "N/A",
+      "stop_reason": "N/A"
+    },
+    {
+      "seed": 20260912,
+      "algorithm": "local_search",
+      "trips": 120,
+      "mean_travel_time": 8.873547668457032,
+      "p95_travel_time": 13.07913818359375,
+      "max_congestion_ratio": 2.125,
+      "accepted_moves": 25,
+      "iterations": 25,
+      "stop_reason": "max_iterations_reached"
+    },
+    {
+      "seed": 20260913,
+      "algorithm": "baseline",
+      "trips": 120,
+      "mean_travel_time": 11.631112874348958,
+      "p95_travel_time": 22.48107482910156,
+      "max_congestion_ratio": 2.75,
+      "accepted_moves": "N/A",
+      "iterations": "N/A",
+      "stop_reason": "N/A"
+    },
+    {
+      "seed": 20260913,
+      "algorithm": "greedy",
+      "trips": 120,
+      "mean_travel_time": 5.945083821614583,
+      "p95_travel_time": 7.876713867187499,
+      "max_congestion_ratio": 1.5,
+      "accepted_moves": "N/A",
+      "iterations": "N/A",
+      "stop_reason": "N/A"
+    },
+    {
+      "seed": 20260913,
+      "algorithm": "local_search",
+      "trips": 120,
+      "mean_travel_time": 7.066545410156249,
+      "p95_travel_time": 9.293841552734374,
+      "max_congestion_ratio": 1.75,
+      "accepted_moves": 25,
+      "iterations": 25,
+      "stop_reason": "max_iterations_reached"
+    },
+    {
+      "seed": 20260914,
+      "algorithm": "baseline",
+      "trips": 120,
+      "mean_travel_time": 10.142232055664062,
+      "p95_travel_time": 19.840673828124995,
+      "max_congestion_ratio": 2.625,
+      "accepted_moves": "N/A",
+      "iterations": "N/A",
+      "stop_reason": "N/A"
+    },
+    {
+      "seed": 20260914,
+      "algorithm": "greedy",
+      "trips": 120,
+      "mean_travel_time": 5.948027343749999,
+      "p95_travel_time": 8.4695703125,
+      "max_congestion_ratio": 1.5,
+      "accepted_moves": "N/A",
+      "iterations": "N/A",
+      "stop_reason": "N/A"
+    },
+    {
+      "seed": 20260914,
+      "algorithm": "local_search",
+      "trips": 120,
+      "mean_travel_time": 7.019963378906249,
+      "p95_travel_time": 10.2936328125,
+      "max_congestion_ratio": 2.125,
+      "accepted_moves": 25,
+      "iterations": 25,
+      "stop_reason": "max_iterations_reached"
+    }
+  ],
+  "summary": {
+    "by_algorithm": {
+      "baseline": {
+        "n_seeds": 3,
+        "average_mean_travel_time": 11.118072272406684,
+        "average_p95_travel_time": 20.13974385579427,
+        "average_max_congestion_ratio": 2.625
+      },
+      "greedy": {
+        "n_seeds": 3,
+        "average_mean_travel_time": 6.048986579047309,
+        "average_p95_travel_time": 8.34069091796875,
+        "average_max_congestion_ratio": 1.5416666666666667
+      },
+      "local_search": {
+        "n_seeds": 3,
+        "average_mean_travel_time": 7.6533521525065105,
+        "average_p95_travel_time": 10.888870849609376,
+        "average_max_congestion_ratio": 2.0
+      }
+    },
+    "greedy_beats_baseline_mean": 3,
+    "greedy_beats_baseline_p95": 3,
+    "greedy_reduces_max_congestion": 3,
+    "local_search_beats_baseline_mean": 3,
+    "local_search_beats_baseline_lexicographic": 3,
+    "local_search_reduces_max_congestion": 3,
+    "n_seeds": 3,
+    "pairwise_deltas": [
+      {
+        "seed": 20260912,
+        "greedy_mean_delta": -5.327023315429686,
+        "greedy_p95_delta": -9.421694335937499,
+        "greedy_max_congestion_delta": -0.875,
+        "local_search_mean_delta": -2.7073242187499975,
+        "local_search_p95_delta": -5.018344726562498,
+        "local_search_max_congestion_delta": -0.375
+      },
+      {
+        "seed": 20260913,
+        "greedy_mean_delta": -5.686029052734375,
+        "greedy_p95_delta": -14.60436096191406,
+        "greedy_max_congestion_delta": -1.25,
+        "local_search_mean_delta": -4.5645674641927085,
+        "local_search_p95_delta": -13.187233276367184,
+        "local_search_max_congestion_delta": -1.0
+      },
+      {
+        "seed": 20260914,
+        "greedy_mean_delta": -4.194204711914063,
+        "greedy_p95_delta": -11.371103515624995,
+        "greedy_max_congestion_delta": -1.125,
+        "local_search_mean_delta": -3.1222686767578125,
+        "local_search_p95_delta": -9.547041015624995,
+        "local_search_max_congestion_delta": -0.5
+      }
+    ],
+    "qualitative_answers": {
+      "A_greedy_mean": "3/3",
+      "B_greedy_p95": "3/3",
+      "C_greedy_max_congestion": "3/3",
+      "D_local_search_improves_baseline_mean": "3/3",
+      "E_ranking_stable": true
+    },
+    "conclusion": "Across the three additional deterministic seeds [20260912, 20260913, 20260914], greedy improved baseline mean on 3/3 seeds, p95 on 3/3, and max congestion on 3/3. Baseline-start local search improved baseline mean on 3/3 seeds and the lexicographic objective on 3/3. The qualitative behavior was stable in this small robustness sample. This is not statistical significance, universal performance, or a global-optimum claim."
+  }
+}
