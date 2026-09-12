@@ -1,0 +1,3084 @@
+{
+  "algorithm": "one_trip_counterfactual",
+  "seed": 20260911,
+  "top_n": 10,
+  "selected_trip_count": 10,
+  "comparison_rule": {
+    "primary_objective": "lower mean travel time",
+    "tie_breakers": [
+      "lower p95 travel time",
+      "lower max congestion ratio"
+    ],
+    "tolerance": 1e-12,
+    "note": "A candidate is better if its (mean, p95, max congestion) tuple is lexicographically smaller. All three metrics need not improve at once."
+  },
+  "baseline": {
+    "algorithm": "baseline",
+    "seed": 20260911,
+    "top_n": 10,
+    "selected_trip_count": 10,
+    "candidate_count_tested": 50,
+    "comparison_rule": {
+      "primary_objective": "lower mean travel time",
+      "tie_breakers": [
+        "lower p95 travel time",
+        "lower max congestion ratio"
+      ],
+      "tolerance": 1e-12,
+      "note": "A candidate is better if its (mean, p95, max congestion) tuple is lexicographically smaller. All three metrics need not improve at once."
+    },
+    "current_network_metrics": {
+      "mean_travel_time": 8.768970642089842,
+      "p95_travel_time": 14.204617919921873,
+      "max_congestion_ratio": 2.375,
+      "total_trip_travel_time": 1052.2764770507813,
+      "maximum_trip_travel_time": 16.5897216796875
+    },
+    "trip_results": [
+      {
+        "trip_index": 84,
+        "source": 18,
+        "destination": 0,
+        "current_route": [
+          18,
+          13,
+          8,
+          3,
+          2,
+          1,
+          0
+        ],
+        "impact_rank": 1,
+        "impact_score": 9.75,
+        "critical_edge_impact": 3.875,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              18,
+              13,
+              8,
+              3,
+              2,
+              1,
+              0
+            ],
+            "route_length": 6,
+            "is_current_route": true,
+            "candidate_mean_travel_time": 8.768970642089842,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": 0.0,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": false,
+            "comparison_reason": "candidate is the current route; no reroute"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              18,
+              13,
+              8,
+              7,
+              2,
+              1,
+              0
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.700763854980467,
+            "candidate_p95_travel_time": 13.276456298828123,
+            "candidate_max_congestion_ratio": 2.25,
+            "delta_mean_travel_time": -0.068206787109375,
+            "delta_p95_travel_time": -0.92816162109375,
+            "delta_max_congestion_ratio": -0.125,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              18,
+              13,
+              8,
+              7,
+              6,
+              1,
+              0
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.648194274902343,
+            "candidate_p95_travel_time": 13.416558837890626,
+            "candidate_max_congestion_ratio": 2.25,
+            "delta_mean_travel_time": -0.12077636718749929,
+            "delta_p95_travel_time": -0.7880590820312463,
+            "delta_max_congestion_ratio": -0.125,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              18,
+              13,
+              8,
+              7,
+              6,
+              5,
+              0
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.654328308105468,
+            "candidate_p95_travel_time": 13.36619567871094,
+            "candidate_max_congestion_ratio": 2.25,
+            "delta_mean_travel_time": -0.11464233398437429,
+            "delta_p95_travel_time": -0.8384222412109334,
+            "delta_max_congestion_ratio": -0.125,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              18,
+              17,
+              12,
+              7,
+              2,
+              1,
+              0
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.592640075683592,
+            "candidate_p95_travel_time": 13.193885498046876,
+            "candidate_max_congestion_ratio": 2.25,
+            "delta_mean_travel_time": -0.17633056640625,
+            "delta_p95_travel_time": -1.0107324218749962,
+            "delta_max_congestion_ratio": -0.125,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 4,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.592640075683592,
+          "p95_travel_time": 13.193885498046876,
+          "max_congestion_ratio": 2.25
+        },
+        "best_delta_mean": -0.17633056640625,
+        "best_delta_p95": -1.0107324218749962,
+        "best_delta_max_congestion": -0.125,
+        "genuine_improvement": true
+      },
+      {
+        "trip_index": 31,
+        "source": 23,
+        "destination": 1,
+        "current_route": [
+          23,
+          18,
+          13,
+          8,
+          3,
+          2,
+          1
+        ],
+        "impact_rank": 2,
+        "impact_score": 9.0,
+        "critical_edge_impact": 3.625,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              23,
+              18,
+              13,
+              8,
+              3,
+              2,
+              1
+            ],
+            "route_length": 6,
+            "is_current_route": true,
+            "candidate_mean_travel_time": 8.768970642089842,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": 0.0,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": false,
+            "comparison_reason": "candidate is the current route; no reroute"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              23,
+              18,
+              13,
+              8,
+              7,
+              2,
+              1
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.700763854980467,
+            "candidate_p95_travel_time": 13.276456298828123,
+            "candidate_max_congestion_ratio": 2.25,
+            "delta_mean_travel_time": -0.068206787109375,
+            "delta_p95_travel_time": -0.92816162109375,
+            "delta_max_congestion_ratio": -0.125,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              23,
+              18,
+              13,
+              8,
+              7,
+              6,
+              1
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.648194274902343,
+            "candidate_p95_travel_time": 13.091737060546874,
+            "candidate_max_congestion_ratio": 2.25,
+            "delta_mean_travel_time": -0.12077636718749929,
+            "delta_p95_travel_time": -1.1128808593749984,
+            "delta_max_congestion_ratio": -0.125,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              23,
+              18,
+              17,
+              12,
+              7,
+              2,
+              1
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.592640075683592,
+            "candidate_p95_travel_time": 13.193885498046876,
+            "candidate_max_congestion_ratio": 2.25,
+            "delta_mean_travel_time": -0.17633056640625,
+            "delta_p95_travel_time": -1.0107324218749962,
+            "delta_max_congestion_ratio": -0.125,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              23,
+              18,
+              17,
+              12,
+              7,
+              6,
+              1
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.540070495605468,
+            "candidate_p95_travel_time": 12.702047729492188,
+            "candidate_max_congestion_ratio": 2.25,
+            "delta_mean_travel_time": -0.2289001464843743,
+            "delta_p95_travel_time": -1.5025701904296849,
+            "delta_max_congestion_ratio": -0.125,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 4,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.540070495605468,
+          "p95_travel_time": 12.702047729492188,
+          "max_congestion_ratio": 2.25
+        },
+        "best_delta_mean": -0.2289001464843743,
+        "best_delta_p95": -1.5025701904296849,
+        "best_delta_max_congestion": -0.125,
+        "genuine_improvement": true
+      },
+      {
+        "trip_index": 67,
+        "source": 3,
+        "destination": 20,
+        "current_route": [
+          3,
+          2,
+          1,
+          0,
+          5,
+          10,
+          15,
+          20
+        ],
+        "impact_rank": 3,
+        "impact_score": 9.5,
+        "critical_edge_impact": 3.125,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              3,
+              2,
+              1,
+              0,
+              5,
+              10,
+              15,
+              20
+            ],
+            "route_length": 7,
+            "is_current_route": true,
+            "candidate_mean_travel_time": 8.768970642089842,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": 0.0,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": false,
+            "comparison_reason": "candidate is the current route; no reroute"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              3,
+              2,
+              1,
+              6,
+              5,
+              10,
+              15,
+              20
+            ],
+            "route_length": 7,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.775882873535155,
+            "candidate_p95_travel_time": 14.19079162597656,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": 0.0069122314453125,
+            "delta_p95_travel_time": -0.013826293945312429,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              3,
+              2,
+              1,
+              6,
+              11,
+              10,
+              15,
+              20
+            ],
+            "route_length": 7,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.765519104003905,
+            "candidate_p95_travel_time": 14.307330932617186,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.0034515380859367895,
+            "delta_p95_travel_time": 0.10271301269531286,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              3,
+              2,
+              1,
+              6,
+              11,
+              16,
+              15,
+              20
+            ],
+            "route_length": 7,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.76685577392578,
+            "candidate_p95_travel_time": 14.306102294921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.0021148681640621447,
+            "delta_p95_travel_time": 0.10148437500000007,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              3,
+              2,
+              1,
+              6,
+              11,
+              16,
+              21,
+              20
+            ],
+            "route_length": 7,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.75224395751953,
+            "candidate_p95_travel_time": 14.306102294921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.01672668457031179,
+            "delta_p95_travel_time": 0.10148437500000007,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 4,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.75224395751953,
+          "p95_travel_time": 14.306102294921873,
+          "max_congestion_ratio": 2.375
+        },
+        "best_delta_mean": -0.01672668457031179,
+        "best_delta_p95": 0.10148437500000007,
+        "best_delta_max_congestion": 0.0,
+        "genuine_improvement": true
+      },
+      {
+        "trip_index": 70,
+        "source": 18,
+        "destination": 5,
+        "current_route": [
+          18,
+          13,
+          8,
+          7,
+          6,
+          5
+        ],
+        "impact_rank": 4,
+        "impact_score": 8.125,
+        "critical_edge_impact": 3.125,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              18,
+              13,
+              8,
+              7,
+              6,
+              5
+            ],
+            "route_length": 5,
+            "is_current_route": true,
+            "candidate_mean_travel_time": 8.768970642089842,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": 0.0,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": false,
+            "comparison_reason": "candidate is the current route; no reroute"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              18,
+              17,
+              12,
+              7,
+              6,
+              5
+            ],
+            "route_length": 5,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.685895690917967,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.08307495117187536,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              18,
+              17,
+              12,
+              11,
+              6,
+              5
+            ],
+            "route_length": 5,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.628666076660155,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.1403045654296875,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              18,
+              17,
+              12,
+              11,
+              10,
+              5
+            ],
+            "route_length": 5,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.622944030761719,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.14602661132812322,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              18,
+              17,
+              16,
+              11,
+              6,
+              5
+            ],
+            "route_length": 5,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.626761779785157,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.14220886230468466,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 3,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.622944030761719,
+          "p95_travel_time": 14.204617919921873,
+          "max_congestion_ratio": 2.375
+        },
+        "best_delta_mean": -0.14602661132812322,
+        "best_delta_p95": 0.0,
+        "best_delta_max_congestion": 0.0,
+        "genuine_improvement": true
+      },
+      {
+        "trip_index": 117,
+        "source": 18,
+        "destination": 5,
+        "current_route": [
+          18,
+          13,
+          8,
+          7,
+          6,
+          5
+        ],
+        "impact_rank": 5,
+        "impact_score": 8.125,
+        "critical_edge_impact": 3.125,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              18,
+              13,
+              8,
+              7,
+              6,
+              5
+            ],
+            "route_length": 5,
+            "is_current_route": true,
+            "candidate_mean_travel_time": 8.768970642089842,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": 0.0,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": false,
+            "comparison_reason": "candidate is the current route; no reroute"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              18,
+              17,
+              12,
+              7,
+              6,
+              5
+            ],
+            "route_length": 5,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.685895690917967,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.08307495117187536,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              18,
+              17,
+              12,
+              11,
+              6,
+              5
+            ],
+            "route_length": 5,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.628666076660155,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.1403045654296875,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              18,
+              17,
+              12,
+              11,
+              10,
+              5
+            ],
+            "route_length": 5,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.622944030761717,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.146026611328125,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              18,
+              17,
+              16,
+              11,
+              6,
+              5
+            ],
+            "route_length": 5,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.626761779785157,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.14220886230468466,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 3,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.622944030761717,
+          "p95_travel_time": 14.204617919921873,
+          "max_congestion_ratio": 2.375
+        },
+        "best_delta_mean": -0.146026611328125,
+        "best_delta_p95": 0.0,
+        "best_delta_max_congestion": 0.0,
+        "genuine_improvement": true
+      },
+      {
+        "trip_index": 33,
+        "source": 13,
+        "destination": 1,
+        "current_route": [
+          13,
+          8,
+          3,
+          2,
+          1
+        ],
+        "impact_rank": 6,
+        "impact_score": 7.0,
+        "critical_edge_impact": 3.125,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              13,
+              8,
+              3,
+              2,
+              1
+            ],
+            "route_length": 4,
+            "is_current_route": true,
+            "candidate_mean_travel_time": 8.768970642089842,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": 0.0,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": false,
+            "comparison_reason": "candidate is the current route; no reroute"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              13,
+              8,
+              7,
+              2,
+              1
+            ],
+            "route_length": 4,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.700763854980467,
+            "candidate_p95_travel_time": 13.276456298828123,
+            "candidate_max_congestion_ratio": 2.25,
+            "delta_mean_travel_time": -0.068206787109375,
+            "delta_p95_travel_time": -0.92816162109375,
+            "delta_max_congestion_ratio": -0.125,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              13,
+              8,
+              7,
+              6,
+              1
+            ],
+            "route_length": 4,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.648194274902343,
+            "candidate_p95_travel_time": 13.419459228515626,
+            "candidate_max_congestion_ratio": 2.25,
+            "delta_mean_travel_time": -0.12077636718749929,
+            "delta_p95_travel_time": -0.785158691406247,
+            "delta_max_congestion_ratio": -0.125,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              13,
+              8,
+              3,
+              2,
+              7,
+              6,
+              1
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.733544413248698,
+            "candidate_p95_travel_time": 14.128443603515624,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.035426228841144436,
+            "delta_p95_travel_time": -0.07617431640624872,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              13,
+              8,
+              7,
+              6,
+              5,
+              0,
+              1
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.688363138834635,
+            "candidate_p95_travel_time": 13.419459228515626,
+            "candidate_max_congestion_ratio": 2.25,
+            "delta_mean_travel_time": -0.08060750325520694,
+            "delta_p95_travel_time": -0.785158691406247,
+            "delta_max_congestion_ratio": -0.125,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 2,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.648194274902343,
+          "p95_travel_time": 13.419459228515626,
+          "max_congestion_ratio": 2.25
+        },
+        "best_delta_mean": -0.12077636718749929,
+        "best_delta_p95": -0.785158691406247,
+        "best_delta_max_congestion": -0.125,
+        "genuine_improvement": true
+      },
+      {
+        "trip_index": 23,
+        "source": 10,
+        "destination": 14,
+        "current_route": [
+          10,
+          5,
+          6,
+          7,
+          8,
+          9,
+          14
+        ],
+        "impact_rank": 7,
+        "impact_score": 9.0,
+        "critical_edge_impact": 3.0,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              10,
+              5,
+              6,
+              7,
+              8,
+              9,
+              14
+            ],
+            "route_length": 6,
+            "is_current_route": true,
+            "candidate_mean_travel_time": 8.768970642089842,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": 0.0,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": false,
+            "comparison_reason": "candidate is the current route; no reroute"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              10,
+              5,
+              6,
+              7,
+              8,
+              13,
+              14
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.74689727783203,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.022073364257812145,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              10,
+              11,
+              6,
+              7,
+              8,
+              9,
+              14
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.759229431152342,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.009741210937500355,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              10,
+              11,
+              6,
+              7,
+              8,
+              13,
+              14
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.73715606689453,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.0318145751953125,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              10,
+              11,
+              12,
+              7,
+              8,
+              9,
+              14
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.724613342285155,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.0443572998046875,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 4,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.724613342285155,
+          "p95_travel_time": 14.204617919921873,
+          "max_congestion_ratio": 2.375
+        },
+        "best_delta_mean": -0.0443572998046875,
+        "best_delta_p95": 0.0,
+        "best_delta_max_congestion": 0.0,
+        "genuine_improvement": true
+      },
+      {
+        "trip_index": 32,
+        "source": 5,
+        "destination": 19,
+        "current_route": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          14,
+          19
+        ],
+        "impact_rank": 8,
+        "impact_score": 9.0,
+        "critical_edge_impact": 3.0,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              14,
+              19
+            ],
+            "route_length": 6,
+            "is_current_route": true,
+            "candidate_mean_travel_time": 8.768970642089842,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": 0.0,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": false,
+            "comparison_reason": "candidate is the current route; no reroute"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              5,
+              6,
+              7,
+              8,
+              13,
+              14,
+              19
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.74689727783203,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.022073364257812145,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              5,
+              6,
+              7,
+              8,
+              13,
+              18,
+              19
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.787738952636717,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": 0.018768310546875,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              5,
+              6,
+              7,
+              12,
+              17,
+              18,
+              19
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.686298522949217,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.082672119140625,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              5,
+              6,
+              11,
+              12,
+              17,
+              18,
+              19
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.673682556152345,
+            "candidate_p95_travel_time": 14.294063110351559,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.09528808593749716,
+            "delta_p95_travel_time": 0.0894451904296858,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 4,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.673682556152345,
+          "p95_travel_time": 14.294063110351559,
+          "max_congestion_ratio": 2.375
+        },
+        "best_delta_mean": -0.09528808593749716,
+        "best_delta_p95": 0.0894451904296858,
+        "best_delta_max_congestion": 0.0,
+        "genuine_improvement": true
+      },
+      {
+        "trip_index": 119,
+        "source": 5,
+        "destination": 19,
+        "current_route": [
+          5,
+          6,
+          7,
+          8,
+          9,
+          14,
+          19
+        ],
+        "impact_rank": 9,
+        "impact_score": 9.0,
+        "critical_edge_impact": 3.0,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              14,
+              19
+            ],
+            "route_length": 6,
+            "is_current_route": true,
+            "candidate_mean_travel_time": 8.768970642089842,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": 0.0,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": false,
+            "comparison_reason": "candidate is the current route; no reroute"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              5,
+              6,
+              7,
+              8,
+              13,
+              14,
+              19
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.74689727783203,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.022073364257812145,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              5,
+              6,
+              7,
+              8,
+              13,
+              18,
+              19
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.787738952636717,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": 0.018768310546875,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              5,
+              6,
+              7,
+              12,
+              17,
+              18,
+              19
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.686298522949217,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.082672119140625,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              5,
+              6,
+              11,
+              12,
+              17,
+              18,
+              19
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.673682556152341,
+            "candidate_p95_travel_time": 14.294063110351559,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.09528808593750071,
+            "delta_p95_travel_time": 0.0894451904296858,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 4,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.673682556152341,
+          "p95_travel_time": 14.294063110351559,
+          "max_congestion_ratio": 2.375
+        },
+        "best_delta_mean": -0.09528808593750071,
+        "best_delta_p95": 0.0894451904296858,
+        "best_delta_max_congestion": 0.0,
+        "genuine_improvement": true
+      },
+      {
+        "trip_index": 26,
+        "source": 4,
+        "destination": 0,
+        "current_route": [
+          4,
+          3,
+          2,
+          1,
+          0
+        ],
+        "impact_rank": 10,
+        "impact_score": 7.0,
+        "critical_edge_impact": 3.0,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              4,
+              3,
+              2,
+              1,
+              0
+            ],
+            "route_length": 4,
+            "is_current_route": true,
+            "candidate_mean_travel_time": 8.768970642089842,
+            "candidate_p95_travel_time": 14.204617919921873,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": 0.0,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": false,
+            "comparison_reason": "candidate is the current route; no reroute"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              4,
+              3,
+              2,
+              1,
+              6,
+              5,
+              0
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.795946756998697,
+            "candidate_p95_travel_time": 15.081291503906252,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": 0.02697611490885521,
+            "delta_p95_travel_time": 0.8766735839843793,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              4,
+              3,
+              2,
+              7,
+              6,
+              1,
+              0
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.733544413248698,
+            "candidate_p95_travel_time": 13.899664306640624,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.035426228841144436,
+            "delta_p95_travel_time": -0.30495361328124915,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              4,
+              3,
+              2,
+              7,
+              6,
+              5,
+              0
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.739678446451823,
+            "candidate_p95_travel_time": 14.058515625,
+            "candidate_max_congestion_ratio": 2.375,
+            "delta_mean_travel_time": -0.029292195638019436,
+            "delta_p95_travel_time": -0.14610229492187266,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              4,
+              3,
+              8,
+              7,
+              2,
+              1,
+              0
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 8.72082773844401,
+            "candidate_p95_travel_time": 13.57469970703125,
+            "candidate_max_congestion_ratio": 2.25,
+            "delta_mean_travel_time": -0.04814290364583229,
+            "delta_p95_travel_time": -0.6299182128906224,
+            "delta_max_congestion_ratio": -0.125,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 4,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.72082773844401,
+          "p95_travel_time": 13.57469970703125,
+          "max_congestion_ratio": 2.25
+        },
+        "best_delta_mean": -0.04814290364583229,
+        "best_delta_p95": -0.6299182128906224,
+        "best_delta_max_congestion": -0.125,
+        "genuine_improvement": true
+      }
+    ],
+    "best_counterfactuals": [
+      {
+        "trip_index": 31,
+        "impact_rank": 2,
+        "best_candidate": 4,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.540070495605468,
+          "p95_travel_time": 12.702047729492188,
+          "max_congestion_ratio": 2.25
+        },
+        "best_delta_mean": -0.2289001464843743,
+        "best_delta_p95": -1.5025701904296849,
+        "best_delta_max_congestion": -0.125
+      },
+      {
+        "trip_index": 84,
+        "impact_rank": 1,
+        "best_candidate": 4,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.592640075683592,
+          "p95_travel_time": 13.193885498046876,
+          "max_congestion_ratio": 2.25
+        },
+        "best_delta_mean": -0.17633056640625,
+        "best_delta_p95": -1.0107324218749962,
+        "best_delta_max_congestion": -0.125
+      },
+      {
+        "trip_index": 117,
+        "impact_rank": 5,
+        "best_candidate": 3,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.622944030761717,
+          "p95_travel_time": 14.204617919921873,
+          "max_congestion_ratio": 2.375
+        },
+        "best_delta_mean": -0.146026611328125,
+        "best_delta_p95": 0.0,
+        "best_delta_max_congestion": 0.0
+      },
+      {
+        "trip_index": 70,
+        "impact_rank": 4,
+        "best_candidate": 3,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.622944030761719,
+          "p95_travel_time": 14.204617919921873,
+          "max_congestion_ratio": 2.375
+        },
+        "best_delta_mean": -0.14602661132812322,
+        "best_delta_p95": 0.0,
+        "best_delta_max_congestion": 0.0
+      },
+      {
+        "trip_index": 33,
+        "impact_rank": 6,
+        "best_candidate": 2,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.648194274902343,
+          "p95_travel_time": 13.419459228515626,
+          "max_congestion_ratio": 2.25
+        },
+        "best_delta_mean": -0.12077636718749929,
+        "best_delta_p95": -0.785158691406247,
+        "best_delta_max_congestion": -0.125
+      },
+      {
+        "trip_index": 119,
+        "impact_rank": 9,
+        "best_candidate": 4,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.673682556152341,
+          "p95_travel_time": 14.294063110351559,
+          "max_congestion_ratio": 2.375
+        },
+        "best_delta_mean": -0.09528808593750071,
+        "best_delta_p95": 0.0894451904296858,
+        "best_delta_max_congestion": 0.0
+      },
+      {
+        "trip_index": 32,
+        "impact_rank": 8,
+        "best_candidate": 4,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.673682556152345,
+          "p95_travel_time": 14.294063110351559,
+          "max_congestion_ratio": 2.375
+        },
+        "best_delta_mean": -0.09528808593749716,
+        "best_delta_p95": 0.0894451904296858,
+        "best_delta_max_congestion": 0.0
+      },
+      {
+        "trip_index": 26,
+        "impact_rank": 10,
+        "best_candidate": 4,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.72082773844401,
+          "p95_travel_time": 13.57469970703125,
+          "max_congestion_ratio": 2.25
+        },
+        "best_delta_mean": -0.04814290364583229,
+        "best_delta_p95": -0.6299182128906224,
+        "best_delta_max_congestion": -0.125
+      },
+      {
+        "trip_index": 23,
+        "impact_rank": 7,
+        "best_candidate": 4,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.724613342285155,
+          "p95_travel_time": 14.204617919921873,
+          "max_congestion_ratio": 2.375
+        },
+        "best_delta_mean": -0.0443572998046875,
+        "best_delta_p95": 0.0,
+        "best_delta_max_congestion": 0.0
+      },
+      {
+        "trip_index": 67,
+        "impact_rank": 3,
+        "best_candidate": 4,
+        "best_candidate_metrics": {
+          "mean_travel_time": 8.75224395751953,
+          "p95_travel_time": 14.306102294921873,
+          "max_congestion_ratio": 2.375
+        },
+        "best_delta_mean": -0.01672668457031179,
+        "best_delta_p95": 0.10148437500000007,
+        "best_delta_max_congestion": 0.0
+      }
+    ],
+    "genuine_improvements_found": 10
+  },
+  "greedy": {
+    "algorithm": "greedy",
+    "seed": 20260911,
+    "top_n": 10,
+    "selected_trip_count": 10,
+    "candidate_count_tested": 50,
+    "comparison_rule": {
+      "primary_objective": "lower mean travel time",
+      "tie_breakers": [
+        "lower p95 travel time",
+        "lower max congestion ratio"
+      ],
+      "tolerance": 1e-12,
+      "note": "A candidate is better if its (mean, p95, max congestion) tuple is lexicographically smaller. All three metrics need not improve at once."
+    },
+    "current_network_metrics": {
+      "mean_travel_time": 6.030344543457032,
+      "p95_travel_time": 7.853384399414063,
+      "max_congestion_ratio": 1.625,
+      "total_trip_travel_time": 723.6413452148437,
+      "maximum_trip_travel_time": 9.07205810546875
+    },
+    "trip_results": [
+      {
+        "trip_index": 100,
+        "source": 13,
+        "destination": 11,
+        "current_route": [
+          13,
+          18,
+          17,
+          12,
+          11
+        ],
+        "impact_rank": 1,
+        "impact_score": 5.375,
+        "critical_edge_impact": 1.375,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              13,
+              8,
+              7,
+              6,
+              11
+            ],
+            "route_length": 4,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.021033630371094,
+            "candidate_p95_travel_time": 7.835562744140625,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": -0.009310913085937678,
+            "delta_p95_travel_time": -0.01782165527343782,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              13,
+              8,
+              7,
+              12,
+              11
+            ],
+            "route_length": 4,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.019706115722656,
+            "candidate_p95_travel_time": 7.799381103515625,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": -0.010638427734376066,
+            "delta_p95_travel_time": -0.054003295898438,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              13,
+              18,
+              17,
+              12,
+              11
+            ],
+            "route_length": 4,
+            "is_current_route": true,
+            "candidate_mean_travel_time": 6.030344543457032,
+            "candidate_p95_travel_time": 7.853384399414063,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.0,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": false,
+            "comparison_reason": "candidate is the current route; no reroute"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              13,
+              18,
+              17,
+              16,
+              11
+            ],
+            "route_length": 4,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.034821472167969,
+            "candidate_p95_travel_time": 7.910494995117188,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.004476928710936967,
+            "delta_p95_travel_time": 0.05711059570312482,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              13,
+              8,
+              3,
+              2,
+              1,
+              6,
+              11
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.03976084391276,
+            "candidate_p95_travel_time": 7.853353271484376,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.00941630045572861,
+            "delta_p95_travel_time": -3.1127929687180256e-05,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 1,
+        "best_candidate_metrics": {
+          "mean_travel_time": 6.019706115722656,
+          "p95_travel_time": 7.799381103515625,
+          "max_congestion_ratio": 1.625
+        },
+        "best_delta_mean": -0.010638427734376066,
+        "best_delta_p95": -0.054003295898438,
+        "best_delta_max_congestion": 0.0,
+        "genuine_improvement": true
+      },
+      {
+        "trip_index": 4,
+        "source": 9,
+        "destination": 20,
+        "current_route": [
+          9,
+          14,
+          13,
+          18,
+          23,
+          22,
+          21,
+          20
+        ],
+        "impact_rank": 2,
+        "impact_score": 7.625,
+        "critical_edge_impact": 1.25,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              9,
+              8,
+              7,
+              6,
+              5,
+              10,
+              15,
+              20
+            ],
+            "route_length": 7,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.025849304199219,
+            "candidate_p95_travel_time": 7.898192138671875,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": -0.004495239257813033,
+            "delta_p95_travel_time": 0.044807739257811896,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              9,
+              8,
+              7,
+              6,
+              11,
+              10,
+              15,
+              20
+            ],
+            "route_length": 7,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.025849304199219,
+            "candidate_p95_travel_time": 7.853384399414063,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": -0.004495239257813033,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              9,
+              8,
+              7,
+              6,
+              11,
+              16,
+              15,
+              20
+            ],
+            "route_length": 7,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.027185974121094,
+            "candidate_p95_travel_time": 7.81494140625,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": -0.0031585693359375,
+            "delta_p95_travel_time": -0.038442993164062855,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              9,
+              8,
+              7,
+              6,
+              11,
+              16,
+              21,
+              20
+            ],
+            "route_length": 7,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.029300842285156,
+            "candidate_p95_travel_time": 7.81494140625,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": -0.0010437011718753553,
+            "delta_p95_travel_time": -0.038442993164062855,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              9,
+              8,
+              7,
+              12,
+              11,
+              10,
+              15,
+              20
+            ],
+            "route_length": 7,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.028998718261718,
+            "candidate_p95_travel_time": 7.853384399414063,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": -0.0013458251953135658,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 1,
+        "best_candidate_metrics": {
+          "mean_travel_time": 6.025849304199219,
+          "p95_travel_time": 7.853384399414063,
+          "max_congestion_ratio": 1.625
+        },
+        "best_delta_mean": -0.004495239257813033,
+        "best_delta_p95": 0.0,
+        "best_delta_max_congestion": 0.0,
+        "genuine_improvement": true
+      },
+      {
+        "trip_index": 117,
+        "source": 18,
+        "destination": 5,
+        "current_route": [
+          18,
+          17,
+          12,
+          11,
+          10,
+          5
+        ],
+        "impact_rank": 3,
+        "impact_score": 5.875,
+        "critical_edge_impact": 1.25,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              18,
+              13,
+              8,
+              7,
+              6,
+              5
+            ],
+            "route_length": 5,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.031095275878907,
+            "candidate_p95_travel_time": 7.856605224609375,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.0007507324218751776,
+            "delta_p95_travel_time": 0.0032208251953118605,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              18,
+              17,
+              12,
+              7,
+              6,
+              5
+            ],
+            "route_length": 5,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.035599670410156,
+            "candidate_p95_travel_time": 7.856605224609375,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.005255126953124467,
+            "delta_p95_travel_time": 0.0032208251953118605,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              18,
+              17,
+              12,
+              11,
+              6,
+              5
+            ],
+            "route_length": 5,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.037256774902344,
+            "candidate_p95_travel_time": 7.875172119140625,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.0069122314453125,
+            "delta_p95_travel_time": 0.02178771972656257,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              18,
+              17,
+              12,
+              11,
+              10,
+              5
+            ],
+            "route_length": 5,
+            "is_current_route": true,
+            "candidate_mean_travel_time": 6.030344543457032,
+            "candidate_p95_travel_time": 7.853384399414063,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.0,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": false,
+            "comparison_reason": "candidate is the current route; no reroute"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              18,
+              17,
+              16,
+              11,
+              6,
+              5
+            ],
+            "route_length": 5,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.041733703613281,
+            "candidate_p95_travel_time": 7.9388580322265625,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.011389160156249467,
+            "delta_p95_travel_time": 0.08547363281249964,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 3,
+        "best_candidate_metrics": {
+          "mean_travel_time": 6.030344543457032,
+          "p95_travel_time": 7.853384399414063,
+          "max_congestion_ratio": 1.625
+        },
+        "best_delta_mean": 0.0,
+        "best_delta_p95": 0.0,
+        "best_delta_max_congestion": 0.0,
+        "genuine_improvement": false
+      },
+      {
+        "trip_index": 116,
+        "source": 9,
+        "destination": 21,
+        "current_route": [
+          9,
+          14,
+          19,
+          24,
+          23,
+          22,
+          21
+        ],
+        "impact_rank": 4,
+        "impact_score": 6.875,
+        "critical_edge_impact": 1.125,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              9,
+              8,
+              7,
+              6,
+              11,
+              16,
+              21
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.034079895019532,
+            "candidate_p95_travel_time": 7.872797241210939,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.0037353515624998224,
+            "delta_p95_travel_time": 0.019412841796875746,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              9,
+              8,
+              7,
+              12,
+              11,
+              16,
+              21
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.037229309082032,
+            "candidate_p95_travel_time": 7.876609497070312,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.006884765625000178,
+            "delta_p95_travel_time": 0.02322509765624936,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              9,
+              8,
+              7,
+              12,
+              17,
+              16,
+              21
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.047840270996094,
+            "candidate_p95_travel_time": 7.9373272705078115,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.017495727539062145,
+            "delta_p95_travel_time": 0.08394287109374865,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              9,
+              8,
+              7,
+              12,
+              17,
+              22,
+              21
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.047062072753906,
+            "candidate_p95_travel_time": 7.8851074218749995,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.016717529296874645,
+            "delta_p95_travel_time": 0.03172302246093661,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              9,
+              8,
+              13,
+              18,
+              17,
+              16,
+              21
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.055997619628907,
+            "candidate_p95_travel_time": 8.162697143554688,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.025653076171875178,
+            "delta_p95_travel_time": 0.30931274414062493,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 0,
+        "best_candidate_metrics": {
+          "mean_travel_time": 6.034079895019532,
+          "p95_travel_time": 7.872797241210939,
+          "max_congestion_ratio": 1.625
+        },
+        "best_delta_mean": 0.0037353515624998224,
+        "best_delta_p95": 0.019412841796875746,
+        "best_delta_max_congestion": 0.0,
+        "genuine_improvement": false
+      },
+      {
+        "trip_index": 31,
+        "source": 23,
+        "destination": 1,
+        "current_route": [
+          23,
+          18,
+          17,
+          12,
+          7,
+          2,
+          1
+        ],
+        "impact_rank": 5,
+        "impact_score": 6.5,
+        "critical_edge_impact": 1.125,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              23,
+              18,
+              13,
+              8,
+              3,
+              2,
+              1
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.028202209472656,
+            "candidate_p95_travel_time": 7.80167724609375,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": -0.0021423339843753553,
+            "delta_p95_travel_time": -0.05170715332031328,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              23,
+              18,
+              13,
+              8,
+              7,
+              2,
+              1
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.0303170776367185,
+            "candidate_p95_travel_time": 7.852917480468751,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": -2.7465820313210543e-05,
+            "delta_p95_travel_time": -0.00046691894531214473,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": true,
+            "candidate_is_worse": false,
+            "comparison_reason": "improves lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              23,
+              18,
+              13,
+              8,
+              7,
+              6,
+              1
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.040058288574219,
+            "candidate_p95_travel_time": 7.925593872070312,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.009713745117187145,
+            "delta_p95_travel_time": 0.07220947265624922,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              23,
+              18,
+              17,
+              12,
+              7,
+              2,
+              1
+            ],
+            "route_length": 6,
+            "is_current_route": true,
+            "candidate_mean_travel_time": 6.030344543457032,
+            "candidate_p95_travel_time": 7.853384399414063,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.0,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": false,
+            "comparison_reason": "candidate is the current route; no reroute"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              23,
+              18,
+              17,
+              12,
+              7,
+              6,
+              1
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.04008575439453,
+            "candidate_p95_travel_time": 7.856605224609375,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.009741210937498579,
+            "delta_p95_travel_time": 0.0032208251953118605,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 0,
+        "best_candidate_metrics": {
+          "mean_travel_time": 6.028202209472656,
+          "p95_travel_time": 7.80167724609375,
+          "max_congestion_ratio": 1.625
+        },
+        "best_delta_mean": -0.0021423339843753553,
+        "best_delta_p95": -0.05170715332031328,
+        "best_delta_max_congestion": 0.0,
+        "genuine_improvement": true
+      },
+      {
+        "trip_index": 45,
+        "source": 19,
+        "destination": 5,
+        "current_route": [
+          19,
+          18,
+          17,
+          16,
+          11,
+          10,
+          5
+        ],
+        "impact_rank": 6,
+        "impact_score": 6.5,
+        "critical_edge_impact": 1.125,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              19,
+              14,
+              9,
+              8,
+              7,
+              6,
+              5
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.033301696777343,
+            "candidate_p95_travel_time": 7.853353271484376,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.002957153320311434,
+            "delta_p95_travel_time": -3.1127929687180256e-05,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              19,
+              14,
+              13,
+              8,
+              7,
+              6,
+              5
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.036048278808594,
+            "candidate_p95_travel_time": 7.863180541992187,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.005703735351562322,
+            "delta_p95_travel_time": 0.009796142578124112,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              19,
+              18,
+              13,
+              8,
+              7,
+              6,
+              5
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.037229309082032,
+            "candidate_p95_travel_time": 7.93839111328125,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.006884765625000178,
+            "delta_p95_travel_time": 0.0850067138671875,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              19,
+              18,
+              17,
+              12,
+              7,
+              6,
+              5
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.049891052246094,
+            "candidate_p95_travel_time": 7.952041625976562,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.0195465087890625,
+            "delta_p95_travel_time": 0.09865722656249876,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              19,
+              18,
+              17,
+              12,
+              11,
+              6,
+              5
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.056025085449219,
+            "candidate_p95_travel_time": 7.945744628906249,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.0256805419921875,
+            "delta_p95_travel_time": 0.09236022949218636,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 0,
+        "best_candidate_metrics": {
+          "mean_travel_time": 6.033301696777343,
+          "p95_travel_time": 7.853353271484376,
+          "max_congestion_ratio": 1.625
+        },
+        "best_delta_mean": 0.002957153320311434,
+        "best_delta_p95": -3.1127929687180256e-05,
+        "best_delta_max_congestion": 0.0,
+        "genuine_improvement": false
+      },
+      {
+        "trip_index": 40,
+        "source": 13,
+        "destination": 20,
+        "current_route": [
+          13,
+          18,
+          23,
+          22,
+          21,
+          20
+        ],
+        "impact_rank": 7,
+        "impact_score": 6.125,
+        "critical_edge_impact": 1.125,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              13,
+              18,
+              17,
+              16,
+              15,
+              20
+            ],
+            "route_length": 5,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.040369567871094,
+            "candidate_p95_travel_time": 7.948912353515625,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.0100250244140625,
+            "delta_p95_travel_time": 0.0955279541015619,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              13,
+              18,
+              17,
+              16,
+              21,
+              20
+            ],
+            "route_length": 5,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.042484436035156,
+            "candidate_p95_travel_time": 7.948912353515625,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.012139892578124645,
+            "delta_p95_travel_time": 0.0955279541015619,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              13,
+              18,
+              17,
+              22,
+              21,
+              20
+            ],
+            "route_length": 5,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.041706237792969,
+            "candidate_p95_travel_time": 7.94536376953125,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.011361694335937145,
+            "delta_p95_travel_time": 0.09197937011718693,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              13,
+              18,
+              23,
+              22,
+              21,
+              20
+            ],
+            "route_length": 5,
+            "is_current_route": true,
+            "candidate_mean_travel_time": 6.030344543457032,
+            "candidate_p95_travel_time": 7.853384399414063,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.0,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": false,
+            "comparison_reason": "candidate is the current route; no reroute"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              13,
+              8,
+              7,
+              6,
+              5,
+              10,
+              15,
+              20
+            ],
+            "route_length": 7,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.057979838053385,
+            "candidate_p95_travel_time": 7.918677978515625,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.02763529459635361,
+            "delta_p95_travel_time": 0.06529357910156186,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 3,
+        "best_candidate_metrics": {
+          "mean_travel_time": 6.030344543457032,
+          "p95_travel_time": 7.853384399414063,
+          "max_congestion_ratio": 1.625
+        },
+        "best_delta_mean": 0.0,
+        "best_delta_p95": 0.0,
+        "best_delta_max_congestion": 0.0,
+        "genuine_improvement": false
+      },
+      {
+        "trip_index": 114,
+        "source": 13,
+        "destination": 20,
+        "current_route": [
+          13,
+          18,
+          23,
+          22,
+          21,
+          20
+        ],
+        "impact_rank": 8,
+        "impact_score": 6.125,
+        "critical_edge_impact": 1.125,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              13,
+              18,
+              17,
+              16,
+              15,
+              20
+            ],
+            "route_length": 5,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.040369567871094,
+            "candidate_p95_travel_time": 7.948912353515625,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.0100250244140625,
+            "delta_p95_travel_time": 0.0955279541015619,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              13,
+              18,
+              17,
+              16,
+              21,
+              20
+            ],
+            "route_length": 5,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.042484436035156,
+            "candidate_p95_travel_time": 7.948912353515625,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.012139892578124645,
+            "delta_p95_travel_time": 0.0955279541015619,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              13,
+              18,
+              17,
+              22,
+              21,
+              20
+            ],
+            "route_length": 5,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.041706237792969,
+            "candidate_p95_travel_time": 7.94536376953125,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.011361694335937145,
+            "delta_p95_travel_time": 0.09197937011718693,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              13,
+              18,
+              23,
+              22,
+              21,
+              20
+            ],
+            "route_length": 5,
+            "is_current_route": true,
+            "candidate_mean_travel_time": 6.030344543457032,
+            "candidate_p95_travel_time": 7.853384399414063,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.0,
+            "delta_p95_travel_time": 0.0,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": false,
+            "comparison_reason": "candidate is the current route; no reroute"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              13,
+              8,
+              7,
+              6,
+              5,
+              10,
+              15,
+              20
+            ],
+            "route_length": 7,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.057979838053385,
+            "candidate_p95_travel_time": 7.918677978515625,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.02763529459635361,
+            "delta_p95_travel_time": 0.06529357910156186,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 3,
+        "best_candidate_metrics": {
+          "mean_travel_time": 6.030344543457032,
+          "p95_travel_time": 7.853384399414063,
+          "max_congestion_ratio": 1.625
+        },
+        "best_delta_mean": 0.0,
+        "best_delta_p95": 0.0,
+        "best_delta_max_congestion": 0.0,
+        "genuine_improvement": false
+      },
+      {
+        "trip_index": 62,
+        "source": 14,
+        "destination": 20,
+        "current_route": [
+          14,
+          19,
+          18,
+          23,
+          22,
+          21,
+          20
+        ],
+        "impact_rank": 9,
+        "impact_score": 6.75,
+        "critical_edge_impact": 1.0,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              14,
+              13,
+              18,
+              17,
+              16,
+              15,
+              20
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.053479919433594,
+            "candidate_p95_travel_time": 8.161468505859375,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.023135375976562678,
+            "delta_p95_travel_time": 0.30808410644531214,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              14,
+              13,
+              18,
+              17,
+              16,
+              21,
+              20
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.055594787597656,
+            "candidate_p95_travel_time": 8.161468505859375,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.025250244140623934,
+            "delta_p95_travel_time": 0.30808410644531214,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              14,
+              13,
+              18,
+              17,
+              22,
+              21,
+              20
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.054816589355468,
+            "candidate_p95_travel_time": 8.069181518554688,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.024472045898436434,
+            "delta_p95_travel_time": 0.21579711914062472,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              14,
+              13,
+              18,
+              23,
+              22,
+              21,
+              20
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.043454895019531,
+            "candidate_p95_travel_time": 7.876609497070312,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.01311035156249929,
+            "delta_p95_travel_time": 0.02322509765624936,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              14,
+              19,
+              18,
+              17,
+              16,
+              15,
+              20
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.040369567871094,
+            "candidate_p95_travel_time": 7.971143188476562,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.0100250244140625,
+            "delta_p95_travel_time": 0.11775878906249915,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 4,
+        "best_candidate_metrics": {
+          "mean_travel_time": 6.040369567871094,
+          "p95_travel_time": 7.971143188476562,
+          "max_congestion_ratio": 1.625
+        },
+        "best_delta_mean": 0.0100250244140625,
+        "best_delta_p95": 0.11775878906249915,
+        "best_delta_max_congestion": 0.0,
+        "genuine_improvement": false
+      },
+      {
+        "trip_index": 119,
+        "source": 5,
+        "destination": 19,
+        "current_route": [
+          5,
+          10,
+          11,
+          12,
+          17,
+          18,
+          19
+        ],
+        "impact_rank": 10,
+        "impact_score": 6.625,
+        "critical_edge_impact": 1.0,
+        "candidates": [
+          {
+            "candidate_index": 0,
+            "candidate_route": [
+              5,
+              6,
+              7,
+              8,
+              9,
+              14,
+              19
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.0427682495117185,
+            "candidate_p95_travel_time": 8.09366455078125,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.01242370605468679,
+            "delta_p95_travel_time": 0.2402801513671875,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 1,
+            "candidate_route": [
+              5,
+              6,
+              7,
+              8,
+              13,
+              14,
+              19
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.037513122558593,
+            "candidate_p95_travel_time": 7.974021606445312,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.007168579101561434,
+            "delta_p95_travel_time": 0.12063720703124936,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 2,
+            "candidate_route": [
+              5,
+              6,
+              7,
+              8,
+              13,
+              18,
+              19
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.049900207519531,
+            "candidate_p95_travel_time": 7.885515747070312,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.019555664062499645,
+            "delta_p95_travel_time": 0.032131347656249254,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 3,
+            "candidate_route": [
+              5,
+              6,
+              7,
+              12,
+              17,
+              18,
+              19
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.035608825683594,
+            "candidate_p95_travel_time": 7.8315710449218745,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.0052642822265625,
+            "delta_p95_travel_time": -0.021813354492188353,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          },
+          {
+            "candidate_index": 4,
+            "candidate_route": [
+              5,
+              6,
+              11,
+              12,
+              17,
+              18,
+              19
+            ],
+            "route_length": 6,
+            "is_current_route": false,
+            "candidate_mean_travel_time": 6.032459411621094,
+            "candidate_p95_travel_time": 7.81494140625,
+            "candidate_max_congestion_ratio": 1.625,
+            "delta_mean_travel_time": 0.0021148681640621447,
+            "delta_p95_travel_time": -0.038442993164062855,
+            "delta_max_congestion_ratio": 0.0,
+            "candidate_is_better": false,
+            "candidate_is_worse": true,
+            "comparison_reason": "worse lexicographic objective at mean travel time"
+          }
+        ],
+        "best_candidate": 4,
+        "best_candidate_metrics": {
+          "mean_travel_time": 6.032459411621094,
+          "p95_travel_time": 7.81494140625,
+          "max_congestion_ratio": 1.625
+        },
+        "best_delta_mean": 0.0021148681640621447,
+        "best_delta_p95": -0.038442993164062855,
+        "best_delta_max_congestion": 0.0,
+        "genuine_improvement": false
+      }
+    ],
+    "best_counterfactuals": [
+      {
+        "trip_index": 100,
+        "impact_rank": 1,
+        "best_candidate": 1,
+        "best_candidate_metrics": {
+          "mean_travel_time": 6.019706115722656,
+          "p95_travel_time": 7.799381103515625,
+          "max_congestion_ratio": 1.625
+        },
+        "best_delta_mean": -0.010638427734376066,
+        "best_delta_p95": -0.054003295898438,
+        "best_delta_max_congestion": 0.0
+      },
+      {
+        "trip_index": 4,
+        "impact_rank": 2,
+        "best_candidate": 1,
+        "best_candidate_metrics": {
+          "mean_travel_time": 6.025849304199219,
+          "p95_travel_time": 7.853384399414063,
+          "max_congestion_ratio": 1.625
+        },
+        "best_delta_mean": -0.004495239257813033,
+        "best_delta_p95": 0.0,
+        "best_delta_max_congestion": 0.0
+      },
+      {
+        "trip_index": 31,
+        "impact_rank": 5,
+        "best_candidate": 0,
+        "best_candidate_metrics": {
+          "mean_travel_time": 6.028202209472656,
+          "p95_travel_time": 7.80167724609375,
+          "max_congestion_ratio": 1.625
+        },
+        "best_delta_mean": -0.0021423339843753553,
+        "best_delta_p95": -0.05170715332031328,
+        "best_delta_max_congestion": 0.0
+      }
+    ],
+    "genuine_improvements_found": 3
+  }
+}
