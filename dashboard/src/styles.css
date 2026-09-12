@@ -1,0 +1,142 @@
+:root {
+  --bg: #0b1018;
+  --panel: #141b27;
+  --panel-2: #1b2433;
+  --line: #2a3548;
+  --text: #e8eef8;
+  --muted: #93a0b5;
+  --accent: #5b8def;
+  --ok: #3ecf8e;
+  --warn: #e6b84d;
+  --bad: #e85d5d;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+* { box-sizing: border-box; }
+html, body, #root { margin: 0; min-height: 100%; }
+body {
+  font-family: "IBM Plex Sans", "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  min-height: 100vh;
+}
+
+.sidebar {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  border-right: 1px solid var(--line);
+  background: #101722;
+  padding: 20px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  margin-bottom: 12px;
+}
+.brand small { display: block; color: var(--muted); font-weight: 400; margin-top: 4px; }
+
+.nav-btn {
+  text-align: left;
+  background: transparent;
+  color: var(--muted);
+  border: 0;
+  border-radius: 8px;
+  padding: 9px 10px;
+  cursor: pointer;
+  font: inherit;
+}
+.nav-btn.active, .nav-btn:hover {
+  background: var(--panel-2);
+  color: var(--text);
+}
+
+.main { padding: 28px 32px 64px; max-width: 1280px; }
+
+.hero h1 { margin: 0 0 6px; font-size: 28px; }
+.hero p { color: var(--muted); margin: 0 0 16px; max-width: 720px; }
+.pills { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.pill {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  border-radius: 999px;
+  padding: 5px 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.grid { display: grid; gap: 14px; }
+.kpis { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.card {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+.card h2, .card h3 { margin: 0 0 10px; }
+.kpi-label { color: var(--muted); font-size: 12px; }
+.kpi-value { font-size: 22px; margin-top: 6px; font-variant-numeric: tabular-nums; }
+.note { color: var(--muted); font-size: 13px; line-height: 1.5; }
+
+table { width: 100%; border-collapse: collapse; font-size: 13px; }
+th, td { border-bottom: 1px solid var(--line); padding: 8px 6px; text-align: left; }
+th { color: var(--muted); font-weight: 600; }
+.best { color: var(--ok); font-weight: 700; }
+
+.badge { border-radius: 999px; padding: 2px 8px; font-size: 11px; }
+.badge.ok { background: #173528; color: var(--ok); }
+.badge.near { background: #3a3014; color: var(--warn); }
+.badge.over { background: #3a1717; color: var(--bad); }
+.badge.improve { background: #173528; color: var(--ok); }
+.badge.worse { background: #3a1717; color: var(--bad); }
+.badge.neutral { background: var(--panel-2); color: var(--muted); }
+
+.section { margin-top: 36px; }
+.section h2 { margin-bottom: 8px; }
+.select, input[type="search"] {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+  font: inherit;
+}
+.row { display: flex; gap: 12px; flex-wrap: wrap; align-items: center; margin: 12px 0; }
+.chart { width: 100%; height: 260px; }
+.network-wrap { overflow-x: auto; }
+.legend { display: flex; gap: 12px; flex-wrap: wrap; color: var(--muted); font-size: 12px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 6px; }
+.error {
+  border: 1px solid var(--bad);
+  background: #2a1212;
+  color: #ffd4d4;
+  padding: 16px;
+  border-radius: 10px;
+}
+.figure { width: 100%; border-radius: 8px; border: 1px solid var(--line); }
+.accordion {
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  margin-bottom: 8px;
+  background: var(--panel-2);
+}
+.accordion summary { cursor: pointer; padding: 10px 12px; }
+.accordion .body { padding: 0 12px 12px; color: var(--muted); font-size: 14px; line-height: 1.55; }
+.detail { background: var(--panel-2); border-radius: 8px; padding: 12px; font-size: 13px; }
+
+@media (max-width: 980px) {
+  .app { grid-template-columns: 1fr; }
+  .sidebar { position: relative; height: auto; flex-direction: row; flex-wrap: wrap; }
+  .kpis { grid-template-columns: 1fr 1fr; }
+  .main { padding: 18px; }
+}
