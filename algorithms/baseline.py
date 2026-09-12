@@ -30,6 +30,24 @@ from flow import (
 OUTPUT_PATH = Path("output") / "baseline.json"
 ALGORITHM_NAME = "baseline_independent_shortest_path"
 WEIGHT_ATTR = FREE_FLOW_ATTR
+RUNTIME_FIELD = "runtime_seconds"
+DETERMINISTIC_BENCHMARK_KEYS = (
+    "algorithm",
+    "seed",
+    "number_of_nodes",
+    "number_of_directed_edges",
+    "number_of_trips",
+    "number_of_routes",
+    "trips",
+    "routes",
+    "edge_flows",
+    "trip_travel_times",
+    "mean_travel_time",
+    "p95_travel_time",
+    "max_congestion_ratio",
+)
+REQUIRED_OUTPUT_KEYS = DETERMINISTIC_BENCHMARK_KEYS + (RUNTIME_FIELD,)
+P95_METHOD = "numpy.percentile(q=95, method='linear')"
 
 
 def load_environment() -> Environment:
@@ -110,8 +128,12 @@ def validate_flows_and_metrics(
     p95_travel_time: float,
     max_ratio: float,
 ) -> None:
-    recomputed = compute_edge_flows(graph, routes)
-    _require(recomputed == flows, "Edge flows do not match route traversal counts")
+    independent_counts: dict[tuple[int, int], int] = {(u, v): 0 for u, v in graph.edges()}
+    for route in routes:
+        for u, v in zip(route, route[1:]):
+            _require((u, v) in independent_counts, f"Flow validation saw unknown edge {u}->{v}")
+            independent_counts[(u, v)] += 1
+    _require(independent_counts == flows, "Edge flows do not match route traversal counts")
 
     traversal_sum = sum(len(route) - 1 for route in routes)
     flow_sum = sum(flows.values())
@@ -120,6 +142,10 @@ def validate_flows_and_metrics(
         f"Sum of route edge traversals ({traversal_sum}) != sum of edge flows ({flow_sum})",
     )
 
+    _require(
+        len(trip_times) == DEFAULT_NUM_TRIPS,
+        f"Expected {DEFAULT_NUM_TRIPS} trip travel times, got {len(trip_times)}",
+    )
     _require(len(trip_times) == len(routes), "Each route must have a travel time")
     for index, travel_time in enumerate(trip_times):
         _require(
@@ -133,6 +159,35 @@ def validate_flows_and_metrics(
         ("max_congestion_ratio", max_ratio),
     ):
         _require(math.isfinite(value), f"Metric {name} is not finite: {value}")
+
+
+def extract_deterministic_benchmark(payload: dict) -> dict:
+    missing = [key for key in DETERMINISTIC_BENCHMARK_KEYS if key not in payload]
+    _require(not missing, f"Missing deterministic benchmark fields: {missing}")
+    return {key: payload[key] for key in DETERMINISTIC_BENCHMARK_KEYS}
+
+
+def assert_deterministic_benchmarks_match(first: dict, second: dict, context: str) -> None:
+    left = extract_deterministic_benchmark(first)
+    right = extract_deterministic_benchmark(second)
+    if left != right:
+        mismatched = [key for key in DETERMINISTIC_BENCHMARK_KEYS if left[key] != right[key]]
+        raise ValueError(f"Non-runtime benchmark mismatch ({context}): {mismatched}")
+
+
+def validate_output_schema(result: dict) -> None:
+    missing = [key for key in REQUIRED_OUTPUT_KEYS if key not in result]
+    _require(not missing, f"baseline.json schema missing fields: {missing}")
+    _require(result["number_of_trips"] == DEFAULT_NUM_TRIPS, "number_of_trips must be 120")
+    _require(result["number_of_routes"] == DEFAULT_NUM_TRIPS, "number_of_routes must be 120")
+    _require(len(result["trips"]) == DEFAULT_NUM_TRIPS, "trips list must have 120 entries")
+    _require(len(result["routes"]) == DEFAULT_NUM_TRIPS, "routes list must have 120 entries")
+    _require(
+        len(result["trip_travel_times"]) == DEFAULT_NUM_TRIPS,
+        "trip_travel_times must have 120 entries",
+    )
+    _require(RUNTIME_FIELD in result, "runtime_seconds must be recorded as metadata")
+    _require(math.isfinite(result[RUNTIME_FIELD]) and result[RUNTIME_FIELD] >= 0, "runtime_seconds is invalid")
 
 
 def compute_metrics(trip_times: list[float]) -> tuple[float, float]:
@@ -163,12 +218,13 @@ def run_baseline(env: Environment) -> dict:
         max_ratio,
     )
 
-    return {
+    result = {
         "algorithm": ALGORITHM_NAME,
         "seed": env.seed,
         "number_of_nodes": env.graph.number_of_nodes(),
         "number_of_directed_edges": env.graph.number_of_edges(),
         "number_of_trips": len(env.trips),
+        "number_of_routes": len(routes),
         "trips": [[int(origin), int(destination)] for origin, destination in env.trips],
         "routes": [[int(node) for node in route] for route in routes],
         "edge_flows": serialize_edge_map(flows),
@@ -176,11 +232,29 @@ def run_baseline(env: Environment) -> dict:
         "mean_travel_time": mean_travel_time,
         "p95_travel_time": p95_travel_time,
         "max_congestion_ratio": max_ratio,
-        "runtime_seconds": runtime_seconds,
+        RUNTIME_FIELD: runtime_seconds,
+        "metadata": {
+            "runtime_seconds": runtime_seconds,
+            "runtime_is_deterministic": False,
+            "p95_method": P95_METHOD,
+        },
     }
+    validate_output_schema(result)
+    return result
 
 
-def write_baseline_json(result: dict, path: Path = OUTPUT_PATH) -> None:
+def load_previous_result(path: Path) -> dict | None:
+    if not path.exists():
+        return None
+    with path.open("r", encoding="utf-8") as handle:
+        payload = json.load(handle)
+    if not isinstance(payload, dict):
+        raise ValueError(f"{path.as_posix()} is not a JSON object")
+    return payload
+
+
+def write_baseline_json(result: dict, path: Path = OUTPUT_PATH) -> dict:
+    validate_output_schema(result)
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8") as handle:
         json.dump(result, handle, indent=2)
@@ -190,28 +264,47 @@ def write_baseline_json(result: dict, path: Path = OUTPUT_PATH) -> None:
     if not isinstance(loaded, dict):
         path.unlink(missing_ok=True)
         raise ValueError("output/baseline.json is not a JSON object")
+    validate_output_schema(loaded)
+    return loaded
 
 
-def comparable_result(result: dict) -> dict:
-    payload = dict(result)
-    payload.pop("runtime_seconds", None)
-    return payload
+def verify_repeated_run_determinism(env: Environment, result: dict) -> dict:
+    """Recompute once and require all non-runtime benchmark fields to match."""
+    repeat = run_baseline(env)
+    assert_deterministic_benchmarks_match(result, repeat, "in-process repeated computation")
+    previous = load_previous_result(OUTPUT_PATH)
+    previous_compared = False
+    if previous is not None and all(key in previous for key in DETERMINISTIC_BENCHMARK_KEYS):
+        assert_deterministic_benchmarks_match(previous, result, "previous output/baseline.json")
+        previous_compared = True
+    return {
+        "in_process_repeat_matched": True,
+        "previous_output_compared": previous_compared,
+        "runtime_first": result[RUNTIME_FIELD],
+        "runtime_repeat": repeat[RUNTIME_FIELD],
+        "runtime_varied": result[RUNTIME_FIELD] != repeat[RUNTIME_FIELD],
+    }
 
 
 def main() -> None:
     env = load_environment()
     result = run_baseline(env)
+    determinism = verify_repeated_run_determinism(env, result)
     write_baseline_json(result)
     print("algorithm:", result["algorithm"])
     print("seed:", result["seed"])
     print("number_of_nodes:", result["number_of_nodes"])
     print("number_of_directed_edges:", result["number_of_directed_edges"])
     print("number_of_trips:", result["number_of_trips"])
-    print("number_of_routes:", len(result["routes"]))
+    print("number_of_routes:", result["number_of_routes"])
     print("mean_travel_time:", result["mean_travel_time"])
     print("p95_travel_time:", result["p95_travel_time"])
     print("max_congestion_ratio:", result["max_congestion_ratio"])
     print("runtime_seconds:", result["runtime_seconds"])
+    print("runtime_is_deterministic:", False)
+    print("deterministic_self_check:", determinism["in_process_repeat_matched"])
+    print("previous_output_compared:", determinism["previous_output_compared"])
+    print("in_process_runtime_varied:", determinism["runtime_varied"])
     print("wrote:", OUTPUT_PATH.as_posix())
 
 

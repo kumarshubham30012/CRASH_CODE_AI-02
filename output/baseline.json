@@ -4,6 +4,7 @@
   "number_of_nodes": 25,
   "number_of_directed_edges": 78,
   "number_of_trips": 120,
+  "number_of_routes": 120,
   "trips": [
     [
       0,
@@ -1626,5 +1627,10 @@
   "mean_travel_time": 8.768970642089842,
   "p95_travel_time": 14.204617919921873,
   "max_congestion_ratio": 2.375,
-  "runtime_seconds": 0.007441292000294197
+  "runtime_seconds": 0.00578358300117543,
+  "metadata": {
+    "runtime_seconds": 0.00578358300117543,
+    "runtime_is_deterministic": false,
+    "p95_method": "numpy.percentile(q=95, method='linear')"
+  }
 }
