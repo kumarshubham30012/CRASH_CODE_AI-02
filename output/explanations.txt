@@ -1,0 +1,147 @@
+CRASH_CODE(AI-02) Phase 14 explanations
+algorithm: baseline_start_local_search
+stop_reason: max_iterations_reached
+converged: False
+
+Baseline-start Phase 10 local search, reported by the Phase 11 optimizer wrapper, accepted 25 moves and stopped because max_iterations_reached. The evaluated assignment improved from mean 8.768970642089842 to 6.973099670410155, but this is not neighborhood convergence and not a global optimum. These explanations cover the first 10 accepted reroutes in iteration order.
+
+Trip 31 (23 → 1):
+
+Reason: Trip 31 travels from 23 to 1. It was a high-priority trip in the initial baseline impact ranking (rank 2, critical_edge_impact=3.625). Its replaced route used high-utilization edge 3->2 (flow 19 / capacity 8.0 = 2.375).
+
+Change: Iteration 1 replaced the original route with candidate 4:
+old route 23 → 18 → 13 → 8 → 3 → 2 → 1
+new route 23 → 18 → 17 → 12 → 7 → 6 → 1
+
+Bottlenecks: On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 3->2 (utilization 2.375, rank 1), 2->1 (utilization 2.25, rank 2), 13->8 (utilization 1.5, rank 13), 18->13 (utilization 1.5, rank 14). Other replaced-route edges were within capacity on the initial baseline assignment, including 8->3 (utilization 0.875), 23->18 (utilization 0.5).
+Impact: On the initial baseline assignment, Phase 8 ranked this trip at impact rank 2 with impact_score=9.0, critical_edge_impact=3.625, max_edge_utilization=2.375, and critical_edge_count=4. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.
+Counterfactual: Phase 9 evaluated candidate 4 for this trip. is_current_route=False, candidate_is_better=True, delta_mean=-0.2289001464843743, delta_p95=-1.5025701904296849, delta_max_congestion=-0.125. Comparison reason: improves lexicographic objective at mean travel time.
+Effect: After substituting the candidate, the evaluated complete-network objective changed from mean=8.768970642089842, p95=14.204617919921873, max congestion=2.375 to mean=8.540070495605468, p95=12.702047729492188, max congestion=2.25. Measured improvements (before minus after) were mean=0.2289001464843743, p95=1.5025701904296849, max congestion=0.125. These are one-move local-search results, not a claim that traffic was eliminated.
+Decision: Candidate 4 was accepted as the best evaluated move in iteration 1 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.
+
+Trip 95 (5 → 23):
+
+Reason: Trip 95 travels from 5 to 23. It was a high-priority trip in the initial baseline impact ranking (rank 12, critical_edge_impact=2.875). Its replaced route used high-utilization edge 7->8 (flow 18 / capacity 8.0 = 2.25).
+
+Change: Iteration 2 replaced the original route with candidate 4:
+old route 5 → 6 → 7 → 8 → 13 → 18 → 23
+new route 5 → 6 → 11 → 12 → 17 → 22 → 23
+
+Bottlenecks: On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 7->8 (utilization 2.25, rank 3), 6->7 (utilization 1.625, rank 9), 13->18 (utilization 1.625, rank 10), 5->6 (utilization 1.25, rank 17), 8->13 (utilization 1.125, rank 27). Other replaced-route edges were within capacity on the initial baseline assignment, including 18->23 (utilization 1.0).
+Impact: On the initial baseline assignment, Phase 8 ranked this trip at impact rank 12 with impact_score=8.875, critical_edge_impact=2.875, max_edge_utilization=2.25, and critical_edge_count=5. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.
+Counterfactual: Phase 9 did not evaluate this trip in its default top-N counterfactual set, so no Phase 9 delta is attached. The move was accepted later by Phase 10 local search using the same lexicographic network objective.
+Effect: After substituting the candidate, the evaluated complete-network objective changed from mean=8.540070495605468, p95=12.702047729492188, max congestion=2.25 to mean=8.37153106689453, p95=12.549713745117188, max congestion=2.25. Measured improvements (before minus after) were mean=0.16853942871093786, p95=0.1523339843749998, max congestion=0.0. These are one-move local-search results, not a claim that traffic was eliminated.
+Decision: Candidate 4 was accepted as the best evaluated move in iteration 2 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.
+
+Trip 5 (4 → 11):
+
+Reason: Trip 5 travels from 4 to 11. It was a high-priority trip in the initial baseline impact ranking (rank 17, critical_edge_impact=2.875). Its replaced route used high-utilization edge 3->2 (flow 19 / capacity 8.0 = 2.375).
+
+Change: Iteration 3 replaced the original route with candidate 4:
+old route 4 → 3 → 2 → 1 → 6 → 11
+new route 4 → 3 → 8 → 7 → 12 → 11
+
+Bottlenecks: On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 3->2 (utilization 2.375, rank 1), 2->1 (utilization 2.25, rank 2), 4->3 (utilization 1.125, rank 24), 6->11 (utilization 1.125, rank 25). Other replaced-route edges were within capacity on the initial baseline assignment, including 1->6 (utilization 0.625).
+Impact: On the initial baseline assignment, Phase 8 ranked this trip at impact rank 17 with impact_score=7.5, critical_edge_impact=2.875, max_edge_utilization=2.375, and critical_edge_count=4. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.
+Counterfactual: Phase 9 did not evaluate this trip in its default top-N counterfactual set, so no Phase 9 delta is attached. The move was accepted later by Phase 10 local search using the same lexicographic network objective.
+Effect: After substituting the candidate, the evaluated complete-network objective changed from mean=8.37153106689453, p95=12.549713745117188, max congestion=2.25 to mean=8.216568908691405, p95=12.0611865234375, max congestion=2.125. Measured improvements (before minus after) were mean=0.15496215820312464, p95=0.48852722167968743, max congestion=0.125. These are one-move local-search results, not a claim that traffic was eliminated.
+Decision: Candidate 4 was accepted as the best evaluated move in iteration 3 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.
+
+Trip 70 (18 → 5):
+
+Reason: Trip 70 travels from 18 to 5. It was a high-priority trip in the initial baseline impact ranking (rank 4, critical_edge_impact=3.125). Its replaced route used high-utilization edge 8->7 (flow 16 / capacity 8.0 = 2.0).
+
+Change: Iteration 4 replaced the original route with candidate 4:
+old route 18 → 13 → 8 → 7 → 6 → 5
+new route 18 → 17 → 16 → 11 → 6 → 5
+
+Bottlenecks: On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 8->7 (utilization 2.0, rank 4), 7->6 (utilization 1.875, rank 5), 13->8 (utilization 1.5, rank 13), 18->13 (utilization 1.5, rank 14), 6->5 (utilization 1.25, rank 18).
+Impact: On the initial baseline assignment, Phase 8 ranked this trip at impact rank 4 with impact_score=8.125, critical_edge_impact=3.125, max_edge_utilization=2.0, and critical_edge_count=5. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.
+Counterfactual: Phase 9 evaluated candidate 4 for this trip. is_current_route=False, candidate_is_better=True, delta_mean=-0.14220886230468466, delta_p95=0.0, delta_max_congestion=0.0. Comparison reason: improves lexicographic objective at mean travel time.
+Effect: After substituting the candidate, the evaluated complete-network objective changed from mean=8.216568908691405, p95=12.0611865234375, max congestion=2.125 to mean=8.058429870605469, p95=11.570465698242188, max congestion=2.125. Measured improvements (before minus after) were mean=0.15813903808593643, p95=0.49072082519531257, max congestion=0.0. These are one-move local-search results, not a claim that traffic was eliminated.
+Decision: Candidate 4 was accepted as the best evaluated move in iteration 4 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.
+
+Trip 4 (9 → 20):
+
+Reason: Trip 4 travels from 9 to 20. It was a high-priority trip in the initial baseline impact ranking (rank 29, critical_edge_impact=2.375). Its replaced route used high-utilization edge 8->7 (flow 16 / capacity 8.0 = 2.0).
+
+Change: Iteration 5 replaced the original route with candidate 4:
+old route 9 → 8 → 7 → 6 → 5 → 10 → 15 → 20
+new route 9 → 8 → 7 → 12 → 11 → 10 → 15 → 20
+
+Bottlenecks: On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 8->7 (utilization 2.0, rank 4), 7->6 (utilization 1.875, rank 5), 6->5 (utilization 1.25, rank 18), 15->20 (utilization 1.25, rank 21). Other replaced-route edges were within capacity on the initial baseline assignment, including 5->10 (utilization 1.0), 9->8 (utilization 1.0), 10->15 (utilization 0.75).
+Impact: On the initial baseline assignment, Phase 8 ranked this trip at impact rank 29 with impact_score=9.125, critical_edge_impact=2.375, max_edge_utilization=2.0, and critical_edge_count=4. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.
+Counterfactual: Phase 9 did not evaluate this trip in its default top-N counterfactual set, so no Phase 9 delta is attached. The move was accepted later by Phase 10 local search using the same lexicographic network objective.
+Effect: After substituting the candidate, the evaluated complete-network objective changed from mean=8.058429870605469, p95=11.570465698242188, max congestion=2.125 to mean=7.976151428222655, p95=11.550073242187501, max congestion=2.125. Measured improvements (before minus after) were mean=0.08227844238281357, p95=0.020392456054686647, max congestion=0.0. These are one-move local-search results, not a claim that traffic was eliminated.
+Decision: Candidate 4 was accepted as the best evaluated move in iteration 5 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.
+
+Trip 84 (18 → 0):
+
+Reason: Trip 84 travels from 18 to 0. It was a high-priority trip in the initial baseline impact ranking (rank 1, critical_edge_impact=3.875). Its replaced route used high-utilization edge 3->2 (flow 19 / capacity 8.0 = 2.375).
+
+Change: Iteration 6 replaced the original route with candidate 4:
+old route 18 → 13 → 8 → 3 → 2 → 1 → 0
+new route 18 → 17 → 12 → 7 → 2 → 1 → 0
+
+Bottlenecks: On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 3->2 (utilization 2.375, rank 1), 2->1 (utilization 2.25, rank 2), 13->8 (utilization 1.5, rank 13), 18->13 (utilization 1.5, rank 14), 1->0 (utilization 1.25, rank 16). Other replaced-route edges were within capacity on the initial baseline assignment, including 8->3 (utilization 0.875).
+Impact: On the initial baseline assignment, Phase 8 ranked this trip at impact rank 1 with impact_score=9.75, critical_edge_impact=3.875, max_edge_utilization=2.375, and critical_edge_count=5. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.
+Counterfactual: Phase 9 evaluated candidate 4 for this trip. is_current_route=False, candidate_is_better=True, delta_mean=-0.17633056640625, delta_p95=-1.0107324218749962, delta_max_congestion=-0.125. Comparison reason: improves lexicographic objective at mean travel time.
+Effect: After substituting the candidate, the evaluated complete-network objective changed from mean=7.976151428222655, p95=11.550073242187501, max congestion=2.125 to mean=7.935941467285155, p95=11.335208129882814, max congestion=2.125. Measured improvements (before minus after) were mean=0.04020996093750018, p95=0.21486511230468786, max congestion=0.0. These are one-move local-search results, not a claim that traffic was eliminated.
+Decision: Candidate 4 was accepted as the best evaluated move in iteration 6 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.
+
+Trip 48 (5 → 18):
+
+Reason: Trip 48 travels from 5 to 18. It was a high-priority trip in the initial baseline impact ranking (rank 16, critical_edge_impact=2.875). Its replaced route used high-utilization edge 7->8 (flow 18 / capacity 8.0 = 2.25).
+
+Change: Iteration 7 replaced the original route with candidate 3:
+old route 5 → 6 → 7 → 8 → 13 → 18
+new route 5 → 6 → 11 → 16 → 17 → 18
+
+Bottlenecks: On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 7->8 (utilization 2.25, rank 3), 6->7 (utilization 1.625, rank 9), 13->18 (utilization 1.625, rank 10), 5->6 (utilization 1.25, rank 17), 8->13 (utilization 1.125, rank 27).
+Impact: On the initial baseline assignment, Phase 8 ranked this trip at impact rank 16 with impact_score=7.875, critical_edge_impact=2.875, max_edge_utilization=2.25, and critical_edge_count=5. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.
+Counterfactual: Phase 9 did not evaluate this trip in its default top-N counterfactual set, so no Phase 9 delta is attached. The move was accepted later by Phase 10 local search using the same lexicographic network objective.
+Effect: After substituting the candidate, the evaluated complete-network objective changed from mean=7.935941467285155, p95=11.335208129882814, max congestion=2.125 to mean=7.84557891845703, p95=10.6682373046875, max congestion=2.0. Measured improvements (before minus after) were mean=0.090362548828125, p95=0.6669708251953139, max congestion=0.125. These are one-move local-search results, not a claim that traffic was eliminated.
+Decision: Candidate 3 was accepted as the best evaluated move in iteration 7 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.
+
+Trip 10 (4 → 16):
+
+Reason: Trip 10 travels from 4 to 16. It was a high-priority trip in the initial baseline impact ranking (rank 15, critical_edge_impact=2.875). Its replaced route used high-utilization edge 3->2 (flow 19 / capacity 8.0 = 2.375).
+
+Change: Iteration 8 replaced the original route with candidate 2:
+old route 4 → 3 → 2 → 1 → 6 → 11 → 16
+new route 4 → 3 → 2 → 7 → 12 → 11 → 16
+
+Bottlenecks: On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 3->2 (utilization 2.375, rank 1), 2->1 (utilization 2.25, rank 2), 4->3 (utilization 1.125, rank 24), 6->11 (utilization 1.125, rank 25). Other replaced-route edges were within capacity on the initial baseline assignment, including 1->6 (utilization 0.625), 11->16 (utilization 0.5).
+Impact: On the initial baseline assignment, Phase 8 ranked this trip at impact rank 15 with impact_score=8.0, critical_edge_impact=2.875, max_edge_utilization=2.375, and critical_edge_count=4. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.
+Counterfactual: Phase 9 did not evaluate this trip in its default top-N counterfactual set, so no Phase 9 delta is attached. The move was accepted later by Phase 10 local search using the same lexicographic network objective.
+Effect: After substituting the candidate, the evaluated complete-network objective changed from mean=7.84557891845703, p95=10.6682373046875, max congestion=2.0 to mean=7.748999938964843, p95=10.6682373046875, max congestion=2.0. Measured improvements (before minus after) were mean=0.09657897949218697, p95=0.0, max congestion=0.0. These are one-move local-search results, not a claim that traffic was eliminated.
+Decision: Candidate 2 was accepted as the best evaluated move in iteration 8 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.
+
+Trip 2 (8 → 20):
+
+Reason: Trip 2 travels from 8 to 20. It was a high-priority trip in the initial baseline impact ranking (rank 30, critical_edge_impact=2.375). Its replaced route used high-utilization edge 8->7 (flow 16 / capacity 8.0 = 2.0).
+
+Change: Iteration 9 replaced the original route with candidate 4:
+old route 8 → 7 → 6 → 5 → 10 → 15 → 20
+new route 8 → 7 → 12 → 11 → 10 → 15 → 20
+
+Bottlenecks: On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 8->7 (utilization 2.0, rank 4), 7->6 (utilization 1.875, rank 5), 6->5 (utilization 1.25, rank 18), 15->20 (utilization 1.25, rank 21). Other replaced-route edges were within capacity on the initial baseline assignment, including 5->10 (utilization 1.0), 10->15 (utilization 0.75).
+Impact: On the initial baseline assignment, Phase 8 ranked this trip at impact rank 30 with impact_score=8.125, critical_edge_impact=2.375, max_edge_utilization=2.0, and critical_edge_count=4. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.
+Counterfactual: Phase 9 did not evaluate this trip in its default top-N counterfactual set, so no Phase 9 delta is attached. The move was accepted later by Phase 10 local search using the same lexicographic network objective.
+Effect: After substituting the candidate, the evaluated complete-network objective changed from mean=7.748999938964843, p95=10.6682373046875, max congestion=2.0 to mean=7.696448669433594, p95=10.6682373046875, max congestion=2.0. Measured improvements (before minus after) were mean=0.05255126953124911, p95=0.0, max congestion=0.0. These are one-move local-search results, not a claim that traffic was eliminated.
+Decision: Candidate 4 was accepted as the best evaluated move in iteration 9 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.
+
+Trip 23 (10 → 14):
+
+Reason: Trip 23 travels from 10 to 14. It was a high-priority trip in the initial baseline impact ranking (rank 7, critical_edge_impact=3.0). Its replaced route used high-utilization edge 7->8 (flow 18 / capacity 8.0 = 2.25).
+
+Change: Iteration 10 replaced the original route with candidate 3:
+old route 10 → 5 → 6 → 7 → 8 → 9 → 14
+new route 10 → 11 → 6 → 7 → 8 → 13 → 14
+
+Bottlenecks: On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 7->8 (utilization 2.25, rank 3), 6->7 (utilization 1.625, rank 9), 9->14 (utilization 1.5, rank 11), 5->6 (utilization 1.25, rank 17), 10->5 (utilization 1.25, rank 19), 8->9 (utilization 1.125, rank 26).
+Impact: On the initial baseline assignment, Phase 8 ranked this trip at impact rank 7 with impact_score=9.0, critical_edge_impact=3.0, max_edge_utilization=2.25, and critical_edge_count=6. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.
+Counterfactual: Phase 9 evaluated candidate 3 for this trip. is_current_route=False, candidate_is_better=True, delta_mean=-0.0318145751953125, delta_p95=0.0, delta_max_congestion=0.0. Comparison reason: improves lexicographic objective at mean travel time.
+Effect: After substituting the candidate, the evaluated complete-network objective changed from mean=7.696448669433594, p95=10.6682373046875, max congestion=2.0 to mean=7.663141784667968, p95=10.229832763671874, max congestion=2.0. Measured improvements (before minus after) were mean=0.03330688476562571, p95=0.4384045410156254, max congestion=0.0. These are one-move local-search results, not a claim that traffic was eliminated.
+Decision: Candidate 3 was accepted as the best evaluated move in iteration 10 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.
+

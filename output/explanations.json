@@ -1,0 +1,1015 @@
+{
+  "algorithm": "baseline_start_local_search",
+  "top_n": 10,
+  "objective": [
+    "mean_travel_time",
+    "p95_travel_time",
+    "max_congestion_ratio"
+  ],
+  "stop_reason": "max_iterations_reached",
+  "converged": false,
+  "accepted_move_count": 25,
+  "initial_metrics": {
+    "mean_travel_time": 8.768970642089842,
+    "p95_travel_time": 14.204617919921873,
+    "max_congestion_ratio": 2.375,
+    "total_trip_travel_time": 1052.2764770507813,
+    "maximum_trip_travel_time": 16.5897216796875
+  },
+  "final_metrics": {
+    "mean_travel_time": 6.973099670410155,
+    "p95_travel_time": 9.124248046875001,
+    "max_congestion_ratio": 1.875,
+    "total_trip_travel_time": 836.7719604492188,
+    "maximum_trip_travel_time": 10.5363525390625
+  },
+  "context": "Baseline-start Phase 10 local search, reported by the Phase 11 optimizer wrapper, accepted 25 moves and stopped because max_iterations_reached. The evaluated assignment improved from mean 8.768970642089842 to 6.973099670410155, but this is not neighborhood convergence and not a global optimum. These explanations cover the first 10 accepted reroutes in iteration order.",
+  "explanations": [
+    {
+      "trip_index": 31,
+      "origin": 23,
+      "destination": 1,
+      "iteration": 1,
+      "candidate_index": 4,
+      "old_route": [
+        23,
+        18,
+        13,
+        8,
+        3,
+        2,
+        1
+      ],
+      "new_route": [
+        23,
+        18,
+        17,
+        12,
+        7,
+        6,
+        1
+      ],
+      "old_mean_travel_time": 8.768970642089842,
+      "new_mean_travel_time": 8.540070495605468,
+      "mean_improvement": 0.2289001464843743,
+      "old_p95_travel_time": 14.204617919921873,
+      "new_p95_travel_time": 12.702047729492188,
+      "p95_improvement": 1.5025701904296849,
+      "old_max_congestion": 2.375,
+      "new_max_congestion": 2.25,
+      "max_congestion_improvement": 0.125,
+      "bottlenecks": [
+        {
+          "edge": "3->2",
+          "flow": 19,
+          "capacity": 8.0,
+          "utilization": 2.375,
+          "rank": 1,
+          "status": "overloaded"
+        },
+        {
+          "edge": "2->1",
+          "flow": 18,
+          "capacity": 8.0,
+          "utilization": 2.25,
+          "rank": 2,
+          "status": "overloaded"
+        },
+        {
+          "edge": "13->8",
+          "flow": 12,
+          "capacity": 8.0,
+          "utilization": 1.5,
+          "rank": 13,
+          "status": "overloaded"
+        },
+        {
+          "edge": "18->13",
+          "flow": 12,
+          "capacity": 8.0,
+          "utilization": 1.5,
+          "rank": 14,
+          "status": "overloaded"
+        },
+        {
+          "edge": "8->3",
+          "flow": 7,
+          "capacity": 8.0,
+          "utilization": 0.875,
+          "rank": 38,
+          "status": "within_capacity"
+        },
+        {
+          "edge": "23->18",
+          "flow": 4,
+          "capacity": 8.0,
+          "utilization": 0.5,
+          "rank": 61,
+          "status": "within_capacity"
+        }
+      ],
+      "bottleneck_summary": "On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 3->2 (utilization 2.375, rank 1), 2->1 (utilization 2.25, rank 2), 13->8 (utilization 1.5, rank 13), 18->13 (utilization 1.5, rank 14). Other replaced-route edges were within capacity on the initial baseline assignment, including 8->3 (utilization 0.875), 23->18 (utilization 0.5).",
+      "impact": {
+        "rank": 2,
+        "impact_score": 9.0,
+        "critical_edge_impact": 3.625,
+        "max_edge_utilization": 2.375,
+        "critical_edge_count": 4
+      },
+      "impact_summary": "On the initial baseline assignment, Phase 8 ranked this trip at impact rank 2 with impact_score=9.0, critical_edge_impact=3.625, max_edge_utilization=2.375, and critical_edge_count=4. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.",
+      "counterfactual": {
+        "impact_rank": 2,
+        "best_candidate": 4,
+        "genuine_improvement": true
+      },
+      "counterfactual_summary": "Phase 9 evaluated candidate 4 for this trip. is_current_route=False, candidate_is_better=True, delta_mean=-0.2289001464843743, delta_p95=-1.5025701904296849, delta_max_congestion=-0.125. Comparison reason: improves lexicographic objective at mean travel time.",
+      "reason": "Trip 31 travels from 23 to 1. It was a high-priority trip in the initial baseline impact ranking (rank 2, critical_edge_impact=3.625). Its replaced route used high-utilization edge 3->2 (flow 19 / capacity 8.0 = 2.375).",
+      "effect": "After substituting the candidate, the evaluated complete-network objective changed from mean=8.768970642089842, p95=14.204617919921873, max congestion=2.375 to mean=8.540070495605468, p95=12.702047729492188, max congestion=2.25. Measured improvements (before minus after) were mean=0.2289001464843743, p95=1.5025701904296849, max congestion=0.125. These are one-move local-search results, not a claim that traffic was eliminated.",
+      "decision": "Candidate 4 was accepted as the best evaluated move in iteration 1 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.",
+      "decision_flag": "accepted"
+    },
+    {
+      "trip_index": 95,
+      "origin": 5,
+      "destination": 23,
+      "iteration": 2,
+      "candidate_index": 4,
+      "old_route": [
+        5,
+        6,
+        7,
+        8,
+        13,
+        18,
+        23
+      ],
+      "new_route": [
+        5,
+        6,
+        11,
+        12,
+        17,
+        22,
+        23
+      ],
+      "old_mean_travel_time": 8.540070495605468,
+      "new_mean_travel_time": 8.37153106689453,
+      "mean_improvement": 0.16853942871093786,
+      "old_p95_travel_time": 12.702047729492188,
+      "new_p95_travel_time": 12.549713745117188,
+      "p95_improvement": 0.1523339843749998,
+      "old_max_congestion": 2.25,
+      "new_max_congestion": 2.25,
+      "max_congestion_improvement": 0.0,
+      "bottlenecks": [
+        {
+          "edge": "7->8",
+          "flow": 18,
+          "capacity": 8.0,
+          "utilization": 2.25,
+          "rank": 3,
+          "status": "overloaded"
+        },
+        {
+          "edge": "6->7",
+          "flow": 13,
+          "capacity": 8.0,
+          "utilization": 1.625,
+          "rank": 9,
+          "status": "overloaded"
+        },
+        {
+          "edge": "13->18",
+          "flow": 13,
+          "capacity": 8.0,
+          "utilization": 1.625,
+          "rank": 10,
+          "status": "overloaded"
+        },
+        {
+          "edge": "5->6",
+          "flow": 10,
+          "capacity": 8.0,
+          "utilization": 1.25,
+          "rank": 17,
+          "status": "overloaded"
+        },
+        {
+          "edge": "8->13",
+          "flow": 9,
+          "capacity": 8.0,
+          "utilization": 1.125,
+          "rank": 27,
+          "status": "overloaded"
+        },
+        {
+          "edge": "18->23",
+          "flow": 8,
+          "capacity": 8.0,
+          "utilization": 1.0,
+          "rank": 35,
+          "status": "within_capacity"
+        }
+      ],
+      "bottleneck_summary": "On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 7->8 (utilization 2.25, rank 3), 6->7 (utilization 1.625, rank 9), 13->18 (utilization 1.625, rank 10), 5->6 (utilization 1.25, rank 17), 8->13 (utilization 1.125, rank 27). Other replaced-route edges were within capacity on the initial baseline assignment, including 18->23 (utilization 1.0).",
+      "impact": {
+        "rank": 12,
+        "impact_score": 8.875,
+        "critical_edge_impact": 2.875,
+        "max_edge_utilization": 2.25,
+        "critical_edge_count": 5
+      },
+      "impact_summary": "On the initial baseline assignment, Phase 8 ranked this trip at impact rank 12 with impact_score=8.875, critical_edge_impact=2.875, max_edge_utilization=2.25, and critical_edge_count=5. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.",
+      "counterfactual": null,
+      "counterfactual_summary": "Phase 9 did not evaluate this trip in its default top-N counterfactual set, so no Phase 9 delta is attached. The move was accepted later by Phase 10 local search using the same lexicographic network objective.",
+      "reason": "Trip 95 travels from 5 to 23. It was a high-priority trip in the initial baseline impact ranking (rank 12, critical_edge_impact=2.875). Its replaced route used high-utilization edge 7->8 (flow 18 / capacity 8.0 = 2.25).",
+      "effect": "After substituting the candidate, the evaluated complete-network objective changed from mean=8.540070495605468, p95=12.702047729492188, max congestion=2.25 to mean=8.37153106689453, p95=12.549713745117188, max congestion=2.25. Measured improvements (before minus after) were mean=0.16853942871093786, p95=0.1523339843749998, max congestion=0.0. These are one-move local-search results, not a claim that traffic was eliminated.",
+      "decision": "Candidate 4 was accepted as the best evaluated move in iteration 2 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.",
+      "decision_flag": "accepted"
+    },
+    {
+      "trip_index": 5,
+      "origin": 4,
+      "destination": 11,
+      "iteration": 3,
+      "candidate_index": 4,
+      "old_route": [
+        4,
+        3,
+        2,
+        1,
+        6,
+        11
+      ],
+      "new_route": [
+        4,
+        3,
+        8,
+        7,
+        12,
+        11
+      ],
+      "old_mean_travel_time": 8.37153106689453,
+      "new_mean_travel_time": 8.216568908691405,
+      "mean_improvement": 0.15496215820312464,
+      "old_p95_travel_time": 12.549713745117188,
+      "new_p95_travel_time": 12.0611865234375,
+      "p95_improvement": 0.48852722167968743,
+      "old_max_congestion": 2.25,
+      "new_max_congestion": 2.125,
+      "max_congestion_improvement": 0.125,
+      "bottlenecks": [
+        {
+          "edge": "3->2",
+          "flow": 19,
+          "capacity": 8.0,
+          "utilization": 2.375,
+          "rank": 1,
+          "status": "overloaded"
+        },
+        {
+          "edge": "2->1",
+          "flow": 18,
+          "capacity": 8.0,
+          "utilization": 2.25,
+          "rank": 2,
+          "status": "overloaded"
+        },
+        {
+          "edge": "4->3",
+          "flow": 9,
+          "capacity": 8.0,
+          "utilization": 1.125,
+          "rank": 24,
+          "status": "overloaded"
+        },
+        {
+          "edge": "6->11",
+          "flow": 9,
+          "capacity": 8.0,
+          "utilization": 1.125,
+          "rank": 25,
+          "status": "overloaded"
+        },
+        {
+          "edge": "1->6",
+          "flow": 5,
+          "capacity": 8.0,
+          "utilization": 0.625,
+          "rank": 51,
+          "status": "within_capacity"
+        }
+      ],
+      "bottleneck_summary": "On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 3->2 (utilization 2.375, rank 1), 2->1 (utilization 2.25, rank 2), 4->3 (utilization 1.125, rank 24), 6->11 (utilization 1.125, rank 25). Other replaced-route edges were within capacity on the initial baseline assignment, including 1->6 (utilization 0.625).",
+      "impact": {
+        "rank": 17,
+        "impact_score": 7.5,
+        "critical_edge_impact": 2.875,
+        "max_edge_utilization": 2.375,
+        "critical_edge_count": 4
+      },
+      "impact_summary": "On the initial baseline assignment, Phase 8 ranked this trip at impact rank 17 with impact_score=7.5, critical_edge_impact=2.875, max_edge_utilization=2.375, and critical_edge_count=4. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.",
+      "counterfactual": null,
+      "counterfactual_summary": "Phase 9 did not evaluate this trip in its default top-N counterfactual set, so no Phase 9 delta is attached. The move was accepted later by Phase 10 local search using the same lexicographic network objective.",
+      "reason": "Trip 5 travels from 4 to 11. It was a high-priority trip in the initial baseline impact ranking (rank 17, critical_edge_impact=2.875). Its replaced route used high-utilization edge 3->2 (flow 19 / capacity 8.0 = 2.375).",
+      "effect": "After substituting the candidate, the evaluated complete-network objective changed from mean=8.37153106689453, p95=12.549713745117188, max congestion=2.25 to mean=8.216568908691405, p95=12.0611865234375, max congestion=2.125. Measured improvements (before minus after) were mean=0.15496215820312464, p95=0.48852722167968743, max congestion=0.125. These are one-move local-search results, not a claim that traffic was eliminated.",
+      "decision": "Candidate 4 was accepted as the best evaluated move in iteration 3 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.",
+      "decision_flag": "accepted"
+    },
+    {
+      "trip_index": 70,
+      "origin": 18,
+      "destination": 5,
+      "iteration": 4,
+      "candidate_index": 4,
+      "old_route": [
+        18,
+        13,
+        8,
+        7,
+        6,
+        5
+      ],
+      "new_route": [
+        18,
+        17,
+        16,
+        11,
+        6,
+        5
+      ],
+      "old_mean_travel_time": 8.216568908691405,
+      "new_mean_travel_time": 8.058429870605469,
+      "mean_improvement": 0.15813903808593643,
+      "old_p95_travel_time": 12.0611865234375,
+      "new_p95_travel_time": 11.570465698242188,
+      "p95_improvement": 0.49072082519531257,
+      "old_max_congestion": 2.125,
+      "new_max_congestion": 2.125,
+      "max_congestion_improvement": 0.0,
+      "bottlenecks": [
+        {
+          "edge": "8->7",
+          "flow": 16,
+          "capacity": 8.0,
+          "utilization": 2.0,
+          "rank": 4,
+          "status": "overloaded"
+        },
+        {
+          "edge": "7->6",
+          "flow": 15,
+          "capacity": 8.0,
+          "utilization": 1.875,
+          "rank": 5,
+          "status": "overloaded"
+        },
+        {
+          "edge": "13->8",
+          "flow": 12,
+          "capacity": 8.0,
+          "utilization": 1.5,
+          "rank": 13,
+          "status": "overloaded"
+        },
+        {
+          "edge": "18->13",
+          "flow": 12,
+          "capacity": 8.0,
+          "utilization": 1.5,
+          "rank": 14,
+          "status": "overloaded"
+        },
+        {
+          "edge": "6->5",
+          "flow": 10,
+          "capacity": 8.0,
+          "utilization": 1.25,
+          "rank": 18,
+          "status": "overloaded"
+        }
+      ],
+      "bottleneck_summary": "On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 8->7 (utilization 2.0, rank 4), 7->6 (utilization 1.875, rank 5), 13->8 (utilization 1.5, rank 13), 18->13 (utilization 1.5, rank 14), 6->5 (utilization 1.25, rank 18).",
+      "impact": {
+        "rank": 4,
+        "impact_score": 8.125,
+        "critical_edge_impact": 3.125,
+        "max_edge_utilization": 2.0,
+        "critical_edge_count": 5
+      },
+      "impact_summary": "On the initial baseline assignment, Phase 8 ranked this trip at impact rank 4 with impact_score=8.125, critical_edge_impact=3.125, max_edge_utilization=2.0, and critical_edge_count=5. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.",
+      "counterfactual": {
+        "impact_rank": 4,
+        "best_candidate": 3,
+        "genuine_improvement": true
+      },
+      "counterfactual_summary": "Phase 9 evaluated candidate 4 for this trip. is_current_route=False, candidate_is_better=True, delta_mean=-0.14220886230468466, delta_p95=0.0, delta_max_congestion=0.0. Comparison reason: improves lexicographic objective at mean travel time.",
+      "reason": "Trip 70 travels from 18 to 5. It was a high-priority trip in the initial baseline impact ranking (rank 4, critical_edge_impact=3.125). Its replaced route used high-utilization edge 8->7 (flow 16 / capacity 8.0 = 2.0).",
+      "effect": "After substituting the candidate, the evaluated complete-network objective changed from mean=8.216568908691405, p95=12.0611865234375, max congestion=2.125 to mean=8.058429870605469, p95=11.570465698242188, max congestion=2.125. Measured improvements (before minus after) were mean=0.15813903808593643, p95=0.49072082519531257, max congestion=0.0. These are one-move local-search results, not a claim that traffic was eliminated.",
+      "decision": "Candidate 4 was accepted as the best evaluated move in iteration 4 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.",
+      "decision_flag": "accepted"
+    },
+    {
+      "trip_index": 4,
+      "origin": 9,
+      "destination": 20,
+      "iteration": 5,
+      "candidate_index": 4,
+      "old_route": [
+        9,
+        8,
+        7,
+        6,
+        5,
+        10,
+        15,
+        20
+      ],
+      "new_route": [
+        9,
+        8,
+        7,
+        12,
+        11,
+        10,
+        15,
+        20
+      ],
+      "old_mean_travel_time": 8.058429870605469,
+      "new_mean_travel_time": 7.976151428222655,
+      "mean_improvement": 0.08227844238281357,
+      "old_p95_travel_time": 11.570465698242188,
+      "new_p95_travel_time": 11.550073242187501,
+      "p95_improvement": 0.020392456054686647,
+      "old_max_congestion": 2.125,
+      "new_max_congestion": 2.125,
+      "max_congestion_improvement": 0.0,
+      "bottlenecks": [
+        {
+          "edge": "8->7",
+          "flow": 16,
+          "capacity": 8.0,
+          "utilization": 2.0,
+          "rank": 4,
+          "status": "overloaded"
+        },
+        {
+          "edge": "7->6",
+          "flow": 15,
+          "capacity": 8.0,
+          "utilization": 1.875,
+          "rank": 5,
+          "status": "overloaded"
+        },
+        {
+          "edge": "6->5",
+          "flow": 10,
+          "capacity": 8.0,
+          "utilization": 1.25,
+          "rank": 18,
+          "status": "overloaded"
+        },
+        {
+          "edge": "15->20",
+          "flow": 10,
+          "capacity": 8.0,
+          "utilization": 1.25,
+          "rank": 21,
+          "status": "overloaded"
+        },
+        {
+          "edge": "5->10",
+          "flow": 8,
+          "capacity": 8.0,
+          "utilization": 1.0,
+          "rank": 33,
+          "status": "within_capacity"
+        },
+        {
+          "edge": "9->8",
+          "flow": 8,
+          "capacity": 8.0,
+          "utilization": 1.0,
+          "rank": 34,
+          "status": "within_capacity"
+        },
+        {
+          "edge": "10->15",
+          "flow": 6,
+          "capacity": 8.0,
+          "utilization": 0.75,
+          "rank": 46,
+          "status": "within_capacity"
+        }
+      ],
+      "bottleneck_summary": "On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 8->7 (utilization 2.0, rank 4), 7->6 (utilization 1.875, rank 5), 6->5 (utilization 1.25, rank 18), 15->20 (utilization 1.25, rank 21). Other replaced-route edges were within capacity on the initial baseline assignment, including 5->10 (utilization 1.0), 9->8 (utilization 1.0), 10->15 (utilization 0.75).",
+      "impact": {
+        "rank": 29,
+        "impact_score": 9.125,
+        "critical_edge_impact": 2.375,
+        "max_edge_utilization": 2.0,
+        "critical_edge_count": 4
+      },
+      "impact_summary": "On the initial baseline assignment, Phase 8 ranked this trip at impact rank 29 with impact_score=9.125, critical_edge_impact=2.375, max_edge_utilization=2.0, and critical_edge_count=4. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.",
+      "counterfactual": null,
+      "counterfactual_summary": "Phase 9 did not evaluate this trip in its default top-N counterfactual set, so no Phase 9 delta is attached. The move was accepted later by Phase 10 local search using the same lexicographic network objective.",
+      "reason": "Trip 4 travels from 9 to 20. It was a high-priority trip in the initial baseline impact ranking (rank 29, critical_edge_impact=2.375). Its replaced route used high-utilization edge 8->7 (flow 16 / capacity 8.0 = 2.0).",
+      "effect": "After substituting the candidate, the evaluated complete-network objective changed from mean=8.058429870605469, p95=11.570465698242188, max congestion=2.125 to mean=7.976151428222655, p95=11.550073242187501, max congestion=2.125. Measured improvements (before minus after) were mean=0.08227844238281357, p95=0.020392456054686647, max congestion=0.0. These are one-move local-search results, not a claim that traffic was eliminated.",
+      "decision": "Candidate 4 was accepted as the best evaluated move in iteration 5 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.",
+      "decision_flag": "accepted"
+    },
+    {
+      "trip_index": 84,
+      "origin": 18,
+      "destination": 0,
+      "iteration": 6,
+      "candidate_index": 4,
+      "old_route": [
+        18,
+        13,
+        8,
+        3,
+        2,
+        1,
+        0
+      ],
+      "new_route": [
+        18,
+        17,
+        12,
+        7,
+        2,
+        1,
+        0
+      ],
+      "old_mean_travel_time": 7.976151428222655,
+      "new_mean_travel_time": 7.935941467285155,
+      "mean_improvement": 0.04020996093750018,
+      "old_p95_travel_time": 11.550073242187501,
+      "new_p95_travel_time": 11.335208129882814,
+      "p95_improvement": 0.21486511230468786,
+      "old_max_congestion": 2.125,
+      "new_max_congestion": 2.125,
+      "max_congestion_improvement": 0.0,
+      "bottlenecks": [
+        {
+          "edge": "3->2",
+          "flow": 19,
+          "capacity": 8.0,
+          "utilization": 2.375,
+          "rank": 1,
+          "status": "overloaded"
+        },
+        {
+          "edge": "2->1",
+          "flow": 18,
+          "capacity": 8.0,
+          "utilization": 2.25,
+          "rank": 2,
+          "status": "overloaded"
+        },
+        {
+          "edge": "13->8",
+          "flow": 12,
+          "capacity": 8.0,
+          "utilization": 1.5,
+          "rank": 13,
+          "status": "overloaded"
+        },
+        {
+          "edge": "18->13",
+          "flow": 12,
+          "capacity": 8.0,
+          "utilization": 1.5,
+          "rank": 14,
+          "status": "overloaded"
+        },
+        {
+          "edge": "1->0",
+          "flow": 10,
+          "capacity": 8.0,
+          "utilization": 1.25,
+          "rank": 16,
+          "status": "overloaded"
+        },
+        {
+          "edge": "8->3",
+          "flow": 7,
+          "capacity": 8.0,
+          "utilization": 0.875,
+          "rank": 38,
+          "status": "within_capacity"
+        }
+      ],
+      "bottleneck_summary": "On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 3->2 (utilization 2.375, rank 1), 2->1 (utilization 2.25, rank 2), 13->8 (utilization 1.5, rank 13), 18->13 (utilization 1.5, rank 14), 1->0 (utilization 1.25, rank 16). Other replaced-route edges were within capacity on the initial baseline assignment, including 8->3 (utilization 0.875).",
+      "impact": {
+        "rank": 1,
+        "impact_score": 9.75,
+        "critical_edge_impact": 3.875,
+        "max_edge_utilization": 2.375,
+        "critical_edge_count": 5
+      },
+      "impact_summary": "On the initial baseline assignment, Phase 8 ranked this trip at impact rank 1 with impact_score=9.75, critical_edge_impact=3.875, max_edge_utilization=2.375, and critical_edge_count=5. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.",
+      "counterfactual": {
+        "impact_rank": 1,
+        "best_candidate": 4,
+        "genuine_improvement": true
+      },
+      "counterfactual_summary": "Phase 9 evaluated candidate 4 for this trip. is_current_route=False, candidate_is_better=True, delta_mean=-0.17633056640625, delta_p95=-1.0107324218749962, delta_max_congestion=-0.125. Comparison reason: improves lexicographic objective at mean travel time.",
+      "reason": "Trip 84 travels from 18 to 0. It was a high-priority trip in the initial baseline impact ranking (rank 1, critical_edge_impact=3.875). Its replaced route used high-utilization edge 3->2 (flow 19 / capacity 8.0 = 2.375).",
+      "effect": "After substituting the candidate, the evaluated complete-network objective changed from mean=7.976151428222655, p95=11.550073242187501, max congestion=2.125 to mean=7.935941467285155, p95=11.335208129882814, max congestion=2.125. Measured improvements (before minus after) were mean=0.04020996093750018, p95=0.21486511230468786, max congestion=0.0. These are one-move local-search results, not a claim that traffic was eliminated.",
+      "decision": "Candidate 4 was accepted as the best evaluated move in iteration 6 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.",
+      "decision_flag": "accepted"
+    },
+    {
+      "trip_index": 48,
+      "origin": 5,
+      "destination": 18,
+      "iteration": 7,
+      "candidate_index": 3,
+      "old_route": [
+        5,
+        6,
+        7,
+        8,
+        13,
+        18
+      ],
+      "new_route": [
+        5,
+        6,
+        11,
+        16,
+        17,
+        18
+      ],
+      "old_mean_travel_time": 7.935941467285155,
+      "new_mean_travel_time": 7.84557891845703,
+      "mean_improvement": 0.090362548828125,
+      "old_p95_travel_time": 11.335208129882814,
+      "new_p95_travel_time": 10.6682373046875,
+      "p95_improvement": 0.6669708251953139,
+      "old_max_congestion": 2.125,
+      "new_max_congestion": 2.0,
+      "max_congestion_improvement": 0.125,
+      "bottlenecks": [
+        {
+          "edge": "7->8",
+          "flow": 18,
+          "capacity": 8.0,
+          "utilization": 2.25,
+          "rank": 3,
+          "status": "overloaded"
+        },
+        {
+          "edge": "6->7",
+          "flow": 13,
+          "capacity": 8.0,
+          "utilization": 1.625,
+          "rank": 9,
+          "status": "overloaded"
+        },
+        {
+          "edge": "13->18",
+          "flow": 13,
+          "capacity": 8.0,
+          "utilization": 1.625,
+          "rank": 10,
+          "status": "overloaded"
+        },
+        {
+          "edge": "5->6",
+          "flow": 10,
+          "capacity": 8.0,
+          "utilization": 1.25,
+          "rank": 17,
+          "status": "overloaded"
+        },
+        {
+          "edge": "8->13",
+          "flow": 9,
+          "capacity": 8.0,
+          "utilization": 1.125,
+          "rank": 27,
+          "status": "overloaded"
+        }
+      ],
+      "bottleneck_summary": "On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 7->8 (utilization 2.25, rank 3), 6->7 (utilization 1.625, rank 9), 13->18 (utilization 1.625, rank 10), 5->6 (utilization 1.25, rank 17), 8->13 (utilization 1.125, rank 27).",
+      "impact": {
+        "rank": 16,
+        "impact_score": 7.875,
+        "critical_edge_impact": 2.875,
+        "max_edge_utilization": 2.25,
+        "critical_edge_count": 5
+      },
+      "impact_summary": "On the initial baseline assignment, Phase 8 ranked this trip at impact rank 16 with impact_score=7.875, critical_edge_impact=2.875, max_edge_utilization=2.25, and critical_edge_count=5. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.",
+      "counterfactual": null,
+      "counterfactual_summary": "Phase 9 did not evaluate this trip in its default top-N counterfactual set, so no Phase 9 delta is attached. The move was accepted later by Phase 10 local search using the same lexicographic network objective.",
+      "reason": "Trip 48 travels from 5 to 18. It was a high-priority trip in the initial baseline impact ranking (rank 16, critical_edge_impact=2.875). Its replaced route used high-utilization edge 7->8 (flow 18 / capacity 8.0 = 2.25).",
+      "effect": "After substituting the candidate, the evaluated complete-network objective changed from mean=7.935941467285155, p95=11.335208129882814, max congestion=2.125 to mean=7.84557891845703, p95=10.6682373046875, max congestion=2.0. Measured improvements (before minus after) were mean=0.090362548828125, p95=0.6669708251953139, max congestion=0.125. These are one-move local-search results, not a claim that traffic was eliminated.",
+      "decision": "Candidate 3 was accepted as the best evaluated move in iteration 7 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.",
+      "decision_flag": "accepted"
+    },
+    {
+      "trip_index": 10,
+      "origin": 4,
+      "destination": 16,
+      "iteration": 8,
+      "candidate_index": 2,
+      "old_route": [
+        4,
+        3,
+        2,
+        1,
+        6,
+        11,
+        16
+      ],
+      "new_route": [
+        4,
+        3,
+        2,
+        7,
+        12,
+        11,
+        16
+      ],
+      "old_mean_travel_time": 7.84557891845703,
+      "new_mean_travel_time": 7.748999938964843,
+      "mean_improvement": 0.09657897949218697,
+      "old_p95_travel_time": 10.6682373046875,
+      "new_p95_travel_time": 10.6682373046875,
+      "p95_improvement": 0.0,
+      "old_max_congestion": 2.0,
+      "new_max_congestion": 2.0,
+      "max_congestion_improvement": 0.0,
+      "bottlenecks": [
+        {
+          "edge": "3->2",
+          "flow": 19,
+          "capacity": 8.0,
+          "utilization": 2.375,
+          "rank": 1,
+          "status": "overloaded"
+        },
+        {
+          "edge": "2->1",
+          "flow": 18,
+          "capacity": 8.0,
+          "utilization": 2.25,
+          "rank": 2,
+          "status": "overloaded"
+        },
+        {
+          "edge": "4->3",
+          "flow": 9,
+          "capacity": 8.0,
+          "utilization": 1.125,
+          "rank": 24,
+          "status": "overloaded"
+        },
+        {
+          "edge": "6->11",
+          "flow": 9,
+          "capacity": 8.0,
+          "utilization": 1.125,
+          "rank": 25,
+          "status": "overloaded"
+        },
+        {
+          "edge": "1->6",
+          "flow": 5,
+          "capacity": 8.0,
+          "utilization": 0.625,
+          "rank": 51,
+          "status": "within_capacity"
+        },
+        {
+          "edge": "11->16",
+          "flow": 4,
+          "capacity": 8.0,
+          "utilization": 0.5,
+          "rank": 56,
+          "status": "within_capacity"
+        }
+      ],
+      "bottleneck_summary": "On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 3->2 (utilization 2.375, rank 1), 2->1 (utilization 2.25, rank 2), 4->3 (utilization 1.125, rank 24), 6->11 (utilization 1.125, rank 25). Other replaced-route edges were within capacity on the initial baseline assignment, including 1->6 (utilization 0.625), 11->16 (utilization 0.5).",
+      "impact": {
+        "rank": 15,
+        "impact_score": 8.0,
+        "critical_edge_impact": 2.875,
+        "max_edge_utilization": 2.375,
+        "critical_edge_count": 4
+      },
+      "impact_summary": "On the initial baseline assignment, Phase 8 ranked this trip at impact rank 15 with impact_score=8.0, critical_edge_impact=2.875, max_edge_utilization=2.375, and critical_edge_count=4. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.",
+      "counterfactual": null,
+      "counterfactual_summary": "Phase 9 did not evaluate this trip in its default top-N counterfactual set, so no Phase 9 delta is attached. The move was accepted later by Phase 10 local search using the same lexicographic network objective.",
+      "reason": "Trip 10 travels from 4 to 16. It was a high-priority trip in the initial baseline impact ranking (rank 15, critical_edge_impact=2.875). Its replaced route used high-utilization edge 3->2 (flow 19 / capacity 8.0 = 2.375).",
+      "effect": "After substituting the candidate, the evaluated complete-network objective changed from mean=7.84557891845703, p95=10.6682373046875, max congestion=2.0 to mean=7.748999938964843, p95=10.6682373046875, max congestion=2.0. Measured improvements (before minus after) were mean=0.09657897949218697, p95=0.0, max congestion=0.0. These are one-move local-search results, not a claim that traffic was eliminated.",
+      "decision": "Candidate 2 was accepted as the best evaluated move in iteration 8 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.",
+      "decision_flag": "accepted"
+    },
+    {
+      "trip_index": 2,
+      "origin": 8,
+      "destination": 20,
+      "iteration": 9,
+      "candidate_index": 4,
+      "old_route": [
+        8,
+        7,
+        6,
+        5,
+        10,
+        15,
+        20
+      ],
+      "new_route": [
+        8,
+        7,
+        12,
+        11,
+        10,
+        15,
+        20
+      ],
+      "old_mean_travel_time": 7.748999938964843,
+      "new_mean_travel_time": 7.696448669433594,
+      "mean_improvement": 0.05255126953124911,
+      "old_p95_travel_time": 10.6682373046875,
+      "new_p95_travel_time": 10.6682373046875,
+      "p95_improvement": 0.0,
+      "old_max_congestion": 2.0,
+      "new_max_congestion": 2.0,
+      "max_congestion_improvement": 0.0,
+      "bottlenecks": [
+        {
+          "edge": "8->7",
+          "flow": 16,
+          "capacity": 8.0,
+          "utilization": 2.0,
+          "rank": 4,
+          "status": "overloaded"
+        },
+        {
+          "edge": "7->6",
+          "flow": 15,
+          "capacity": 8.0,
+          "utilization": 1.875,
+          "rank": 5,
+          "status": "overloaded"
+        },
+        {
+          "edge": "6->5",
+          "flow": 10,
+          "capacity": 8.0,
+          "utilization": 1.25,
+          "rank": 18,
+          "status": "overloaded"
+        },
+        {
+          "edge": "15->20",
+          "flow": 10,
+          "capacity": 8.0,
+          "utilization": 1.25,
+          "rank": 21,
+          "status": "overloaded"
+        },
+        {
+          "edge": "5->10",
+          "flow": 8,
+          "capacity": 8.0,
+          "utilization": 1.0,
+          "rank": 33,
+          "status": "within_capacity"
+        },
+        {
+          "edge": "10->15",
+          "flow": 6,
+          "capacity": 8.0,
+          "utilization": 0.75,
+          "rank": 46,
+          "status": "within_capacity"
+        }
+      ],
+      "bottleneck_summary": "On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 8->7 (utilization 2.0, rank 4), 7->6 (utilization 1.875, rank 5), 6->5 (utilization 1.25, rank 18), 15->20 (utilization 1.25, rank 21). Other replaced-route edges were within capacity on the initial baseline assignment, including 5->10 (utilization 1.0), 10->15 (utilization 0.75).",
+      "impact": {
+        "rank": 30,
+        "impact_score": 8.125,
+        "critical_edge_impact": 2.375,
+        "max_edge_utilization": 2.0,
+        "critical_edge_count": 4
+      },
+      "impact_summary": "On the initial baseline assignment, Phase 8 ranked this trip at impact rank 30 with impact_score=8.125, critical_edge_impact=2.375, max_edge_utilization=2.0, and critical_edge_count=4. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.",
+      "counterfactual": null,
+      "counterfactual_summary": "Phase 9 did not evaluate this trip in its default top-N counterfactual set, so no Phase 9 delta is attached. The move was accepted later by Phase 10 local search using the same lexicographic network objective.",
+      "reason": "Trip 2 travels from 8 to 20. It was a high-priority trip in the initial baseline impact ranking (rank 30, critical_edge_impact=2.375). Its replaced route used high-utilization edge 8->7 (flow 16 / capacity 8.0 = 2.0).",
+      "effect": "After substituting the candidate, the evaluated complete-network objective changed from mean=7.748999938964843, p95=10.6682373046875, max congestion=2.0 to mean=7.696448669433594, p95=10.6682373046875, max congestion=2.0. Measured improvements (before minus after) were mean=0.05255126953124911, p95=0.0, max congestion=0.0. These are one-move local-search results, not a claim that traffic was eliminated.",
+      "decision": "Candidate 4 was accepted as the best evaluated move in iteration 9 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.",
+      "decision_flag": "accepted"
+    },
+    {
+      "trip_index": 23,
+      "origin": 10,
+      "destination": 14,
+      "iteration": 10,
+      "candidate_index": 3,
+      "old_route": [
+        10,
+        5,
+        6,
+        7,
+        8,
+        9,
+        14
+      ],
+      "new_route": [
+        10,
+        11,
+        6,
+        7,
+        8,
+        13,
+        14
+      ],
+      "old_mean_travel_time": 7.696448669433594,
+      "new_mean_travel_time": 7.663141784667968,
+      "mean_improvement": 0.03330688476562571,
+      "old_p95_travel_time": 10.6682373046875,
+      "new_p95_travel_time": 10.229832763671874,
+      "p95_improvement": 0.4384045410156254,
+      "old_max_congestion": 2.0,
+      "new_max_congestion": 2.0,
+      "max_congestion_improvement": 0.0,
+      "bottlenecks": [
+        {
+          "edge": "7->8",
+          "flow": 18,
+          "capacity": 8.0,
+          "utilization": 2.25,
+          "rank": 3,
+          "status": "overloaded"
+        },
+        {
+          "edge": "6->7",
+          "flow": 13,
+          "capacity": 8.0,
+          "utilization": 1.625,
+          "rank": 9,
+          "status": "overloaded"
+        },
+        {
+          "edge": "9->14",
+          "flow": 12,
+          "capacity": 8.0,
+          "utilization": 1.5,
+          "rank": 11,
+          "status": "overloaded"
+        },
+        {
+          "edge": "5->6",
+          "flow": 10,
+          "capacity": 8.0,
+          "utilization": 1.25,
+          "rank": 17,
+          "status": "overloaded"
+        },
+        {
+          "edge": "10->5",
+          "flow": 10,
+          "capacity": 8.0,
+          "utilization": 1.25,
+          "rank": 19,
+          "status": "overloaded"
+        },
+        {
+          "edge": "8->9",
+          "flow": 9,
+          "capacity": 8.0,
+          "utilization": 1.125,
+          "rank": 26,
+          "status": "overloaded"
+        }
+      ],
+      "bottleneck_summary": "On the initial baseline network, the replaced route used overloaded edges with utilization > 1: 7->8 (utilization 2.25, rank 3), 6->7 (utilization 1.625, rank 9), 9->14 (utilization 1.5, rank 11), 5->6 (utilization 1.25, rank 17), 10->5 (utilization 1.25, rank 19), 8->9 (utilization 1.125, rank 26).",
+      "impact": {
+        "rank": 7,
+        "impact_score": 9.0,
+        "critical_edge_impact": 3.0,
+        "max_edge_utilization": 2.25,
+        "critical_edge_count": 6
+      },
+      "impact_summary": "On the initial baseline assignment, Phase 8 ranked this trip at impact rank 7 with impact_score=9.0, critical_edge_impact=3.0, max_edge_utilization=2.25, and critical_edge_count=6. Those scores measure use of high-utilization edges; they do not prove that an alternative existed.",
+      "counterfactual": {
+        "impact_rank": 7,
+        "best_candidate": 4,
+        "genuine_improvement": true
+      },
+      "counterfactual_summary": "Phase 9 evaluated candidate 3 for this trip. is_current_route=False, candidate_is_better=True, delta_mean=-0.0318145751953125, delta_p95=0.0, delta_max_congestion=0.0. Comparison reason: improves lexicographic objective at mean travel time.",
+      "reason": "Trip 23 travels from 10 to 14. It was a high-priority trip in the initial baseline impact ranking (rank 7, critical_edge_impact=3.0). Its replaced route used high-utilization edge 7->8 (flow 18 / capacity 8.0 = 2.25).",
+      "effect": "After substituting the candidate, the evaluated complete-network objective changed from mean=7.696448669433594, p95=10.6682373046875, max congestion=2.0 to mean=7.663141784667968, p95=10.229832763671874, max congestion=2.0. Measured improvements (before minus after) were mean=0.03330688476562571, p95=0.4384045410156254, max congestion=0.0. These are one-move local-search results, not a claim that traffic was eliminated.",
+      "decision": "Candidate 3 was accepted as the best evaluated move in iteration 10 because the resulting (mean travel time, p95 travel time, max congestion ratio) tuple was lexicographically better than the current assignment. Lower is better. This does not prove a global optimum.",
+      "decision_flag": "accepted"
+    }
+  ]
+}
